@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="./images/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="./static/css/post.css">
+  <title>home</title>
+  <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+  <script src="./static/js/post.js"></script>
+</head>
+
+<body>
+    <script>
+    document.addEventListener("plusready", function() {
+    // 注册返回按键事件
+        plus.key.addEventListener('backbutton', function() {
+            window.history.go(-1);
+        }, false);
+    });
+    </script>
+    
+        
+    <div class="nav-bar">
+        <div style="font-weight: 900; cursor: pointer" onclick="goback">
+            ＜
+        </div>
+<!--            <el-button size="mini" type="primary" round-->
+<!--            style="-->
+<!--            margin-left: auto;-->
+<!--            cursor: pointer;-->
+<!--"-->
+<!--            >发布</el-button>-->
+    </div>
+    <div class="main-item">
+        <div class="headbar" onclick="privdechat()">
+            <img src="./images/momo.png" alt="">
+            <div class="name" >匿名用户</div>
+        </div>
+        <div class="bodybar" @click="commentview">
+            <h4 id="title">{{title}}</h4>
+            <p id="content">
+                {{passage}}
+            </p>
+        </div>
+        <Attitude ref="att"></Attitude>
+    </div>
+    <div class="pinglun">评论</div>
+        <form style="margin-left: -70px">
+            <textarea  row="20" ></textarea><br>
+            <input type="button" value="评论" onclick = "test1()">
+        </form>
+    <div>
+        <ul id="comment">
+            <li></li>
+        </ul>
+    </div>
+  </div>
+</body>
+</html>

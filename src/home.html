@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="./images/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="./static/css/home.css">
+  <title>home</title>
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="./static/js/home.js"></script>
+</head>
+
+<body>
+    <div class="main" id="look_chat">
+        <div class="tab-bar">
+            <div onclick="look()">动态</div>
+            <div onclick="privatechat()">私聊</div>
+        </div>
+        <div id="read" style="overflow-y:scroll;">
+            <ul id="re_li">
+                <li></li>
+            </ul>
+        </div>
+        <div id="chat" style="overflow-y:scroll;display: none;">
+            <ul id="ch_li">
+                <li></li>
+            </ul>
+        </div>
+    </div>
+    <div class="mine-view" style="display: none;" id="selfinfo">
+        <div class="tab-bar">个人中心</div>
+        <div class="user-info">
+            <img class="photo" src="./images/momo.png" alt="" />
+            <div class="name">
+                <p id="na"></p>
+            </div>
+            <div class="arrow">></div>
+        </div>
+        <div class="artical-admin">
+            <div class="item">已发布</div>
+            <div class="item">收藏</div>
+        </div>
+        <input type="button" class="btn" value="退出" onclick="quit()">
+    </div>
+    <div id='up' style="display: none;">
+        <div id="div1"></div>
+        <div class="xjxh">
+            <img src="./images/xjtu.png" alt="">
+        </div>
+        <div class="post-back">
+                <input id="title" type="text" />
+                <textarea row="20" id="content"></textarea><br>
+                <input type="button" class="post-btn" value="发表" onclick="uptopic()">
+        </div>
+    </div>
+    <div class="navbar">
+        <div class="item" onclick="choose1()">
+            <div class="el-icon-house"></div>
+            <div>首页</div>
+        </div>
+        <div class="item_img">
+            <div class="el-icon-circle-plus" onclick="choose2()">
+                <img src="./images/post.png" alt="发帖">
+            </div>
+        </div>
+        <div class="item" onclick="choose3()">
+            <div class="el-icon-house"></div>
+            <div>我的</div>
+        </div>
+    </div>
+</body>
+
+</html>

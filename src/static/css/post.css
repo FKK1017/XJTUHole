@@ -1,0 +1,66 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+.nav-bar {
+    padding-left: 5px;
+    padding-right: 5px;
+    border-bottom: 0.5px solid whitesmoke;
+    box-shadow:2px 2px 10px #06c;
+    height: 40px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.main-item {
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: #fff;
+    border-bottom: 8px solid rgb(249, 249, 250);
+    padding-top: 10px;
+}
+.main-item .headbar {
+    display: flex;
+    justify-content: left;
+}
+.bodybar {
+    font-family: "Microsoft YaHei";
+    padding-left: 2px;
+}
+.name {
+    padding-left: 2%;
+}
+.main-item .headbar .time {
+    /*padding-left: 55%;*/
+    font-size: 12px;
+    margin-left: auto;
+}
+.main-item .headbar img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid black;
+    cursor: pointer;
+}
+h4 {
+    font-weight: 500;
+    padding-top: 6px;
+    padding-bottom: 8px;
+}
+p {
+    font-size: 13px;
+    color: grey;
+    padding-bottom: 12px;
+}
+.pinglun {
+width: 100%;
+border-bottom: 0.5px solid whitesmoke;
+padding-left: 15px;
+height: 30px;
+line-height: 30px;
+color: gray;
+font-family: "Microsoft YaHei";
+}
+.comment {
+transform: translateX(-34px)
+}

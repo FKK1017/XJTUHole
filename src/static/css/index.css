@@ -1,0 +1,118 @@
+.loginview {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #eeeeee;
+}
+.xjxh img{
+    width: 20%;
+    position: absolute;
+    top: 18%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+h3 {
+    color: powderblue;
+    font-size: 40px;
+    font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB",
+    "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    position: absolute;
+    top: 28%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.hidden {
+    display: none;
+}
+
+.form1{
+    top: 40%;
+    left: 5%;
+    width: 80%;
+    text-align: center;
+    position: absolute;
+    color: #3e3e3e;
+}
+.form1 table{
+    width: 100%;
+    border-collapse:separate;
+    border-spacing:0px 20px;
+}
+.form1 td{
+    font-size: 30px;
+}
+.form1 td:first-child{
+    width: 30%;
+    vertical-align: middle;
+    text-align:right;
+    padding-right: 5px;
+}
+#username,#password,#re_password,#nickname{
+    font-size: 30px;
+    width: 100%;
+    height: 40px;
+    position: relative;
+    padding-left: 40px;
+    border: 1px solid rgba(17, 17, 17, 0.79);
+    border-radius: 5px;
+}
+#username{
+    background-image: url(../../images/user.png);
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: 10px 10px;
+}
+#password{
+    background-image: url(../../images/password.png);
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: 10px 10px;
+}
+#re_password{
+    background-image: url(../../images/re_pwd.png);
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: 10px 10px;
+}
+#nickname{
+    background-image: url(../../images/name.png);
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: 10px 10px;
+}
+
+
+#log{
+    width: 100%;
+    top: 60%;
+    text-align: center;
+    position: absolute;
+}
+#reg{
+    width: 100%;
+    top: 70%;
+    text-align: center;
+    position: absolute;
+    display: none;
+}
+#log input,#reg input{
+    text-align: center;
+    font-size: 30px;
+    color:#3e3e3e;
+    position: relative;
+    border: 1px solid rgba(142, 144, 144, 0.79);
+    border-radius: 10px;
+}
+#log input{
+    width: 20%;
+}
+#reg input{
+    width: 30%;
+}
+#log input:first-child,#reg input:first-child{
+    margin-right: 20px;
+    background-color: skyblue;
+    color:white;
+}
+

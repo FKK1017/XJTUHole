@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <link rel="icon" href="./images/favicon.ico">
+  <link rel="stylesheet" type="text/css" href="./static/css/index.css">
+  <title>login</title>
+  <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+  <script>
+
+  </script>
+  <div class="loginview">
+    <div class="xjxh">
+      <img src="./images/xjtu.png" alt="" />
+    </div>
+    <h3>XJTUHOLE</h3>
+    <form class="form1">
+      <table>
+        <tr>
+          <td>用户名:</td>
+          <td>
+            <input id="username" type="text" name="name" />
+          </td>
+        </tr>
+        <tr>
+          <td>密码:</td>
+          <td><input id="password" type="password" name="pass"/></td>
+        </tr>
+        <tr id="re" class="hidden">
+          <td>确认密码:</td>
+          <td><input id="re_password" type="password" name="re_pass"/></td>
+        </tr>
+        <tr id="re" class="hidden">
+          <td>昵称:</td>
+          <td><input id="nickname" type="text" name="nickname"/></td>
+        </tr>
+      </table>
+    </form>
+    <div id="log">
+      <input type="button" value="登陆" onclick="login()">
+      <input type="button" value="注册" onclick="login_register()">
+    </div>
+    <div id="reg">
+      <input type="button" value="确认注册" onclick="register()">
+      <input type="button" value="返回登陆" onclick="register_login()">
+    </div>
+  </div>
+</body>
+
+</html>
