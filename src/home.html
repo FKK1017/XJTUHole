@@ -58,7 +58,7 @@
                 console.log("下拉开始了");
                 // list();
                 //下拉停止
-                gettopics(0);
+                gettopics('0');
                 mescroll.endSuccess();
                 // mescroll.resetUpScroll()
             }
@@ -69,7 +69,7 @@
                 }
                 timer = setTimeout(function() {
                     console.log('up');
-                    gettopics(2);
+                    gettopics('2');
                     mescroll.endSuccess(10, true);
                 }, 1000)
             }
@@ -78,7 +78,7 @@
             .mescroll {
                 position: fixed;
                 top: 14%;
-                bottom: 8%;
+                bottom: 110px;
                 height: auto;
             }
             
@@ -86,7 +86,7 @@
                 z-index: 9990;
                 position: fixed;
                 right: 3.5%;
-                bottom: 10%;
+                bottom: 110px;
                 width: 144px;
                 height: 144px;
                 border-radius: 50%;
@@ -115,7 +115,7 @@
     </div>
     <div id='up' style="height: 90%;display: none;">
         <div class="post-back"></div>
-            <div class="postarea">
+        <div class="postarea">
             <input id="title" type="text" placeholder="标题" />
             <textarea row="20" id="content" placeholder="内容"></textarea><br>
             <div class="tags custom">

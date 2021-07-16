@@ -15,11 +15,10 @@ if (u.indexOf("?") != -1) {
     window.name = strs[1];
 }
 
-gettopics('1');
 var int = self.setInterval("listen()", 10000);
 
-$(function () {
-    $(document).keydown(function (event) {
+$(function() {
+    $(document).keydown(function(event) {
         if (event.keyCode == 13) {
             search();
         }
@@ -38,10 +37,10 @@ function choose1() {
             obj[i].style.setProperty('top', '90%', 'important')
         }
     }
-    $("#look_chat").show(500, function () { });
+    $("#look_chat").show(500, function() {});
     $("#search").show();
     $("#selfinfo").hide();
-    $("#up").hide(500, function () { });
+    $("#up").hide(500, function() {});
     $("#read").show();
     $("#chat").hide();
     mescroll.showTopBtn();
@@ -49,9 +48,9 @@ function choose1() {
 }
 
 function choose2() {
-    $("#look_chat").hide(500, function () { });
+    $("#look_chat").hide(500, function() {});
     $("#up").show();
-    $("#selfinfo").hide(500, function () { });
+    $("#selfinfo").hide(500, function() {});
 
     $("#icon").rotate({ animateTo: 180, duration: 500 });
     window.label = 'other';
@@ -73,8 +72,8 @@ function choose3() {
     }
     mescroll.hideTopBtn();
     $("#look_chat").hide();
-    $("#up").hide(500, function () { });
-    $("#selfinfo").show(500, function () { });
+    $("#up").hide(500, function() {});
+    $("#selfinfo").show(500, function() {});
     document.getElementById("na").innerHTML = window.name;
     window.now = 3;
 }
@@ -96,7 +95,7 @@ function look() {
     mescroll.hideTopBtn();
     $("#search").show();
     $('#ch_li').animate({ left: '1000px' }).show();
-    setTimeout(function () {
+    setTimeout(function() {
         $("#chat").hide();
     }, 750)
 }
@@ -139,7 +138,7 @@ function gettopics(w) {
             w,
             n,
         }),
-    }).done(function (data) {
+    }).done(function(data) {
         if (data == false) {
             if (w == 0) {
                 alert('没有新帖子发布');
@@ -185,7 +184,7 @@ function getchat() {
         data: JSON.stringify({
             n,
         }),
-    }).done(function (data) {
+    }).done(function(data) {
         var ch = document.getElementById("ch_li");
         ch.innerHTML = "";
         var temp = "";
@@ -230,7 +229,7 @@ function uptopic() {
                 c,
                 l,
             }),
-        }).done(function (data) {
+        }).done(function(data) {
             if (data) {
                 alert("发送成功");
                 $('input[id="title"]').val("");
@@ -282,7 +281,7 @@ function link(p) {
             n,
             p,
         }),
-    }).done(function (data) {
+    }).done(function(data) {
         //点亮点赞，数字加一
     })
 }
