@@ -100,7 +100,7 @@ html,body {
 	margin-bottom:4px;
 	font-weight:700;
 	font-family:"Microsoft YaHei UI";
-	border-bottom:0.5px solid whitesmoke;
+	/* border-bottom:0.5px solid whitesmoke; */
 	display:flex;
 	align-items:center;
 	background-color:#fff;
