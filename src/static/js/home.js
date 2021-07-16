@@ -15,6 +15,7 @@ if (u.indexOf("?") != -1) {
     window.name = strs[1];
 }
 
+gettopics('1');
 var int = self.setInterval("listen()", 10000);
 
 $(function() {
