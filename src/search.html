@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Search</title>
+    <link rel="icon" href="./images/favicon.ico">
+    <link rel="stylesheet" href="./static/css/search.css">
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="./static/js/search.js"></script>
+</head>
+
+<body>
+    <div class="main">
+        <div class="tab-bar">
+            <div class="back" onclick="quit()"></div>
+            <div>搜索结果</div>
+            <div class="save" onclick="save()" id="save" style="display: none;">完成</div>
+        </div>
+        <div style="overflow-y: scroll;">
+            <ul id="mycollect_li">
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,4 +1,5 @@
 url = 'http://111.229.120.197:8080';
+window.how = 0;
 function register_login() {
     $('input[id="username"]').val("");
     $('input[id="password"]').val("");
@@ -6,14 +7,20 @@ function register_login() {
     $('input[id="nickname"]').val("");
     $('tr[id="re"]').addClass("hidden");
     $("#reg").hide();
+    $('div[id="back"]').hide();
     $("#log").show();
+    $('div[id="regnew"]').show();
+    how = 0;
 }
 function login_register() {
     $('input[id="username"]').val("");
     $('input[id="password"]').val("");
     $('tr[id="re"]').removeClass("hidden");
     $("#reg").show();
+    $('div[id="back"]').show();
     $("#log").hide();
+    $('div[id="regnew"]').hide();
+    how = 1;
 }
 function login() {
     var u = $('input[id="username"]').val();
@@ -69,5 +76,18 @@ function register() {
             alert("注册成功，请继续登陆!")
             register_login();
         })
+    }
+}
+
+function win_ch() {
+    if (1.4 * document.getElementById("login").clientWidth > document.getElementById("login").clientHeight) {
+        $("#reg").hide();
+        $("#log").hide();
+    }
+    else {
+        if (how) {
+            $("#reg").show();
+        }
+        else { $("#log").show(); }
     }
 }

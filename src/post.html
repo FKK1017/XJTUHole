@@ -1,59 +1,69 @@
 <!DOCTYPE html>
 <html lang="">
+
 <head>
-  <meta charset="utf-8">
-  <link rel="icon" href="./images/favicon.ico">
-  <link rel="stylesheet" type="text/css" href="./static/css/post.css">
-  <title>home</title>
-  <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-  <script src="./static/js/post.js"></script>
+    <meta charset="utf-8">
+    <link rel="icon" href="./images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="./static/css/post.css">
+    <title>home</title>
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="./static/js/post.js"></script>
 </head>
 
 <body>
     <script>
-    document.addEventListener("plusready", function() {
-    // 注册返回按键事件
-        plus.key.addEventListener('backbutton', function() {
-            window.history.go(-1);
-        }, false);
-    });
+        document.addEventListener("plusready", function() {
+            // 注册返回按键事件
+            plus.key.addEventListener('backbutton', function() {
+                window.history.go(-1);
+            }, false);
+        });
     </script>
-    
-        
-    <div class="nav-bar">
-        <div style="font-weight: 900; cursor: pointer" onclick="goback">
-            ＜
+    <div class="main">
+        <div class="nav-bar">
+            <div onclick="quit()" class="pointer"></div>
+            <p class="word">帖子</p>
         </div>
-<!--            <el-button size="mini" type="primary" round-->
-<!--            style="-->
-<!--            margin-left: auto;-->
-<!--            cursor: pointer;-->
-<!--"-->
-<!--            >发布</el-button>-->
-    </div>
-    <div class="main-item">
-        <div class="headbar" onclick="privdechat()">
-            <img src="./images/momo.png" alt="">
-            <div class="name" >匿名用户</div>
+        <div class="main-item">
+            <div class="headbar">
+                <img src="./images/momo.png" alt="" id="post_img">
+                <p class="name">匿名用户</p>
+                <div class="more">
+                    <input type="button" class="three" id="three">
+                    <ul class="nav-box">
+                        <li><input type="button" value="删除" onclick="del()"></li>
+                        <li><input type="button" value="举报"></li>
+                        <li><input type="button" value="不感兴趣"></li>
+                    </ul>
+                </div>
+                <p class="time" id="time"></p>
+            </div>
+            <div class="bodybar">
+                <h4 id="title"></h4>
+                <p id="content"></p>
+                <div class="ZanBar">
+                    <button class="LikeF" id="Like" onclick="Like()"></button>
+                    <button class="DislikeF" id="Dislike" onclick="Dislike()"></button>
+                    <button class="StoreF" id="Store" onclick="Sclick()"></button>
+                </div>
+            </div>
         </div>
-        <div class="bodybar" @click="commentview">
-            <h4 id="title">{{title}}</h4>
-            <p id="content">
-                {{passage}}
-            </p>
+        <div class="PingLun">
+            <textarea id='comment' name="MyWord" class="MyWord" placeholder="我来聊几句"></textarea>
+            <input type="button" value="评论" onclick="comment()" class="submit">
+            <input type="button" class="comment">
+            <input type="button" class="store">
+            <input type="button" class="share">
         </div>
-        <Attitude ref="att"></Attitude>
+        <div class="PingLun1">
+            <textarea id='comment1' name="MyWord1" class="MyWord1" rows="3" cols="40" placeholder="写评论..."></textarea>
+            <input type="button" value="发送" onclick="comment()" class="submit">
+        </div>
+        <div class="comments">
+            <ul id="com">
+            </ul>
+        </div>
     </div>
-    <div class="pinglun">评论</div>
-        <form style="margin-left: -70px">
-            <textarea  row="20" ></textarea><br>
-            <input type="button" value="评论" onclick = "test1()">
-        </form>
-    <div>
-        <ul id="comment">
-            <li></li>
-        </ul>
-    </div>
-  </div>
 </body>
+
 </html>

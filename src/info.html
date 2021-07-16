@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="./images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="./static/css/info.css">
+    <title>self_infomation</title>
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="./static/js/info.js"></script>
+</head>
+
+<body>
+    <script>
+        document.addEventListener("plusready", function() {
+        // 注册返回按键事件
+            plus.key.addEventListener('backbutton', function() {
+                window.history.go(-1);
+            }, false);
+        });
+    </script>
+    <div class="nav-bar">
+        <div style="font-weight: 800; cursor: pointer; font-size: 2em;" onclick="quit()">
+            ＜
+        </div>
+        <div class="title">
+            个人资料
+        </div>
+        <div class="opt">
+            <div onclick="cancel()" class="cancel" id="cancel" style="display: none;">
+                取消
+            </div>
+            <div onclick="update()"  class="update" id="update">
+                修改
+            </div>
+            <div onclick="save()" style="display: none;" class="save" id="save">
+                保存
+            </div>
+        </div>
+    </div>
+    <div class="profilepic">
+        <img src="./images/momo.png" alt="头像" onclick="changepic">
+    </div>
+    <div class="profileinfo">
+        <ul>
+            <div class="namediv">
+                <li class="infoname">昵称</li>
+                <li class="infomsg">
+                    <input type="text" id="username" disabled="disabled" style="background-color: white;">
+                </li>
+            </div>
+            <!--<li class="infoname" id="oldpwd">用户密码</li>
+            <li class="infomsg">
+                <input id="mypwd" type="password" value="******" class="mypwd" disabled="disabled" placeholder="请输入原密码">
+            </li>
+
+            <li class="infoname" id="newpwd" style="display: none;">新密码</li>
+            <li class="infomsg" style="display: none;" id="newpwd_input">
+                <input type="password" class="mypwd" id="input2" placeholder="请输入新的密码">
+            </li>
+
+            <li class="infoname" id="renewpwd" style="display: none;">确认密码</li>
+            <li class="infomsg" style="display: none;" id="renewpwd_input" >
+                <input type="password" class="mypwd" id="input3" placeholder="请确认您的密码">
+            </li>-->
+            <div id="nochange">
+                <div class="namediv">
+                    <li class="infoname">发帖数</li>
+                    <li class="infomsg" id="num_of_post"></li>
+                </div>
+                <div class="namediv">
+                    <li class="infoname">注册时间</li>
+                    <li class="infomsg" id="reg_time"></li>
+                </div>
+            </div>
+            <div class="namediv">
+                <li class="infoname">性别</li>
+                <li class="infomsg">
+                    <select disabled="disabled" id="sex_choose" style="background-color: white;">
+                    </select>
+                </li>
+            </div>
+            <div class="namediv">
+                <li class="infoname">简介</li>
+                <li class="infomsg">
+                    <textarea id="briefintro" rows="4" cols="25" disabled="disabled" style="background-color: white;"></textarea>
+                    <!-- 使用textarea的readonly属性改变能否改变 -->
+                </li>
+            </div>
+        </ul>
+    </div>
+</body>
+
+</html>

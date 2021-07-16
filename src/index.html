@@ -9,11 +9,9 @@
   <script src="./static/js/index.js"></script>
 </head>
 
-<body>
-  <script>
-
-  </script>
-  <div class="loginview">
+<body onresize="win_ch()">
+  <div class="loginview" id='login'>
+    <div id="back" class="back" onclick="register_login()"><</div>
     <div class="xjxh">
       <img src="./images/xjtu.png" alt="" />
     </div>
@@ -21,33 +19,30 @@
     <form class="form1">
       <table>
         <tr>
-          <td>用户名:</td>
           <td>
-            <input id="username" type="text" name="name" />
+            <input id="username" type="text" name="name" placeholder="用户名"/>
           </td>
         </tr>
         <tr>
-          <td>密码:</td>
-          <td><input id="password" type="password" name="pass"/></td>
+          <td><input id="password" type="password" name="pass" placeholder="密码"/></td>
         </tr>
         <tr id="re" class="hidden">
-          <td>确认密码:</td>
-          <td><input id="re_password" type="password" name="re_pass"/></td>
+          <td><input id="re_password" type="password" name="re_pass" placeholder="确认密码"/></td>
         </tr>
         <tr id="re" class="hidden">
-          <td>昵称:</td>
-          <td><input id="nickname" type="text" name="nickname"/></td>
+          <td><input id="nickname" type="text" name="nickname" placeholder="您的昵称"/></td>
         </tr>
       </table>
     </form>
     <div id="log">
-      <input type="button" value="登陆" onclick="login()">
-      <input type="button" value="注册" onclick="login_register()">
+      <input type="button" value="登陆" onclick="login()" id="DengLu">
+      <!-- <input type="button" value="注册" onclick="login_register()"> -->
     </div>
     <div id="reg">
-      <input type="button" value="确认注册" onclick="register()">
-      <input type="button" value="返回登陆" onclick="register_login()">
+      <input type="button" class="regbtn1" value="确认注册" onclick="register()">
+      <!-- <input type="button" class="regbtn2" value="返回登陆" onclick="register_login()"> -->
     </div>
+    <div class="reg" onclick="login_register()" id="regnew">——注册新用户——</div>
   </div>
 </body>
 
