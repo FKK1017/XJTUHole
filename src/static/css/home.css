@@ -47,7 +47,7 @@ display:flex;
 }
 body::before {
 	content:"";
-	position:absolute;
+	position:fixed;
 	width:980px;
 	height:100%;
 	left:0;
@@ -68,6 +68,8 @@ body::before {
 html,body {
 	height:100%;
 	font-size:100%;
+	left: 0;
+	right: 0;
 }
 .main {
 	height:94%;
@@ -143,7 +145,7 @@ vertical-align:middle;
 	top:10%;
 	left: 0;
 	right: 0;
-	position:absolute;
+	position:fixed;
 	/*稍后需要调整一下渐变*/
  height:10%;
  width:99%;
@@ -166,7 +168,7 @@ vertical-align:middle;
 	border-bottom:8px solid whitesmoke;
 	justify-content:space-around;
 	align-items:center;
-	position:absolute;
+	position:fixed;
 	top:20%;
 	height:10%;
 	left: 0;
@@ -175,7 +177,7 @@ vertical-align:middle;
 }
 input[class="btn"] {
 	width:35%;
-	position:absolute;
+	position:fixed;
 	bottom:15%;
 	left:32.5%;
 	right:32.5%;
@@ -187,6 +189,7 @@ input[class="btn"] {
 	border:2px solid black;
 	border-radius:20px;
 	background-color:transparent;
+	position: fixed;
 }
 .temp {
 	padding-left:5px;
@@ -254,8 +257,8 @@ ul[id="re_li"] {
 	overflow:scroll;
 }
 ul[id="ch_li"] {
-	position:relative;
-	top:10%;
+	position:fixed;
+	top:13%;
 	bottom:5%;
 	width:100%;
 	overflow:scroll;
@@ -476,12 +479,12 @@ text-align:center;
 .postarea {
 	background-color:white;
 	border-radius:30px;
-	position:absolute;
+	position:fixed;
 	margin-left:2.5%;
 	margin-right:2.5%;
 	width:95%;
 	top:90%;
-	height:70%;
+	height:auto;
 	transition:top 1s;
 	opacity:0.75;
 }

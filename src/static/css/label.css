@@ -28,10 +28,10 @@
 	display: inline-block;
 	font-size: 3em;
 	font-weight: bold;
-	line-height: 35px;
+	line-height: 50px;
 	height: 35%;
 	width: 18%;
-	padding: 25px 10px 0px;
+	padding: 15px 10px 15px;
 	position: relative;
 	text-shadow: 0 1px 0 rgba(0,0,0,0.5);
 	text-decoration: none;

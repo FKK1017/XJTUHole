@@ -107,9 +107,10 @@ function get_collect() {
             var l = document.getElementById("mycollect_li");
             l.innerHTML = "";
             for (var i = 0; i < data.length; i++) {
-                l.innerHTML =l.innerHTML + '<div class="post" id="' + data[i]['post_id'] + '" onclick="read_topic(' + data[i]['post_id'] + ')"><div class="post_title">'
+                l.innerHTML = '<div class="post" id="' + data[i]['post_id'] + '" onclick="read_topic(' + data[i]['post_id'] + ')"><div class="post_title">'
                 + data[i]['title'] + '</div><div class="post_some_context">'
                 + data[i]['content'] + '</div><div class="post_info"><div id="thumb1" style="float: right;">点赞 200</div><div id="comment1" style="float: right;">评论 100</div><div id="share1" style="float: right;">转发 100</div></div></div><div class="cancel" id="' + data[i]['post_id'] + '"><div id="' + data[i]['post_id'] + '" class="delete" onclick="del(' + data[i]['post_id'] + ')">删除</div></div>'
+                + l.innerHTML;
             }
         }
     })

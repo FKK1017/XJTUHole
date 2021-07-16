@@ -68,19 +68,19 @@ function save() {
 }
 
 function del(p) {
-    var n=window.name;
-    $.ajax(url + '/ucollectpost',{
-        async:true,
-        type:"POST",
-        contentType:"application/json",
-        data:JSON.stringify({
-        n,
-        p,
+    $.ajax(url + '/delpost', {
+        async: true,
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({
+            p,
         }),
-    }).done(function(data){
-        if (!data) {
+    }).done(function(data) {
+        if (data) {
             //删除
-            var de = document.getElementById("p" + p.tostring());
+            var de = document.getElementById(p);
+            de.parentNode.removeChild(de);
+            var de = document.getElementById(p);
             de.parentNode.removeChild(de);
         }
     })
@@ -103,9 +103,10 @@ function get_history() {
             var l = document.getElementById("history_li");
             l.innerHTML = "";
             for (var i = 0; i < data.length; i++) {
-                l.innerHTML = l.innerHTML + '<div class="post" id="' + data[i]['post_id'] + '" onclick="read_topic(' + data[i]['post_id'] + ')"><div class="post_title">'
+                l.innerHTML = '<div class="post" id="' + data[i]['post_id'] + '" onclick="read_topic(' + data[i]['post_id'] + ')"><div class="post_title">'
                 + data[i]['title'] + '</div><div class="post_some_context">'
                 + data[i]['content'] + '</div><div class="post_info"><div id="thumb1" style="float: right;">点赞 200</div><div id="comment1" style="float: right;">评论 100</div><div id="share1" style="float: right;">转发 100</div></div></div><div class="cancel" id="' + data[i]['post_id'] + '"><div class="delete" onclick="del(' + data[i]['post_id'] + ')">删除</div></div>'
+                + l.innerHTML;
             }
         }
     })
