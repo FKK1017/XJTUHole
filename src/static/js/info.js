@@ -120,10 +120,6 @@ function get_info() {
     })
 }
 
-function quit() {
-    window.location.href = './home.html?nickname=' + window.name;
-}
-
 function alter_info() {
     var n = window.name;
     var nn = $('input[id="username"]').val();

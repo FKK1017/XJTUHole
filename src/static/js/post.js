@@ -13,10 +13,6 @@ if (u.indexOf("?") != -1) {
 var comment_nub;
 main();
 
-function quit() {
-    window.history.go(-1);
-}
-
 function del() {
     if (window.name != window.author) {
         alert('您不可以删除该帖哦');

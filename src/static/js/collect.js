@@ -8,10 +8,6 @@ if (u.indexOf("?") != -1) {
 }
 get_collect();
 
-function quit() {
-    window.history.go(-1);
-}
-
 function modify() {
     console.log("modifying")
 
