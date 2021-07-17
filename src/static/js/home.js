@@ -155,7 +155,7 @@ function gettopics(w) {
                     re.innerHTML = re.innerHTML + '<div class="post" id="' + data[i]['post_id'] + '" onclick="read_topic(' + data[i]['post_id'] + ')"><div class="post_title">' + data[i]['title'] + '</div>' +
                         '<div class="post_some_context">' + data[i]['content'] + '</div>' +
                         '<div class="post_info">' + 
-                        '<div id="tag1" style="float: left;display: flex;">' + '<img id="tag" src="./images/tag.png" alt="" class="homeTag">' + '<div class="num">' + data[i][''] + '</div>' + '</div>' +
+                        '<div id="tag1" style="float: left;display: flex;">' + '<img id="tag" src="./images/tag.png" alt="" class="homeTag">' + '<div class="num">' + data[i]['board'] + '</div>' + '</div>' +
                         '<div id="thumb1" style="float: right;display: flex;">' + '<img id="zan" src="./images/b_Zan.png" alt="" class="homeLike">' + '<div class="num">' + data[i]['like_count'] + '</div>' + '</div>' +
                         '<div id="comment1" style="float: right;display: flex;">' + '<img id="store" src="./images/b_Store1.png" alt="" class="homeStore">' + '<div class="num">' + data[i]['collect_count'] + '</div>' + '</div>' +
                         '<div id="share1" style="float: right;display: flex;">' + '<img id="comment" src="./images/Comment.png" alt="" class="homeComment">' + '<div class="num">' + data[i]['comment_count'] + '</div></div></div></div>';
