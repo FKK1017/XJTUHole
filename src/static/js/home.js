@@ -39,11 +39,7 @@ function choose1() {
         }
     }
     $("#look_chat").show(500, function() {});
-    $("#search").show();
     $("#selfinfo").hide();
-    $("#up").hide(500, function() {});
-    $("#read").show();
-    $("#chat").hide();
     mescroll.showTopBtn();
     window.now = 1;
 }
