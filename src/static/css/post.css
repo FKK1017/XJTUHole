@@ -183,6 +183,16 @@ body {
     margin: 0 10px;
 }
 
+.tagF {
+    height: 80px;
+}
+
+.taginfo {
+    line-height: 80px;
+    font-size: 40px;
+    vertical-align: middle;
+}
+
 .LikeF {
     background-image: url("../../images/b_Zan.png");
 }
