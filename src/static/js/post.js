@@ -310,14 +310,6 @@ function DislikeCmt(p) {
     })
 }
 
-function chat(n) {
-    if (n == window.name) {
-        alert("这是你自己的评论哦~");
-    } else {
-        window.location.href = './chat.html?nickname=' + window.name + '&who=' + n;
-    }
-}
-
 function getNewDate() {
     var date = new Date();
     var transverse = "-";

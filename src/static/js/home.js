@@ -51,12 +51,12 @@ function choose1() {
 function choose2() {
     $("#look_chat").hide(500, function() {});
     $("#up").show();
-    $("#selfinfo").hide(500, function() {});
 
     $("#icon").rotate({ animateTo: 180, duration: 500 });
     window.label = '其他';
     window.now = 2;
     mescroll.hideTopBtn();
+    $("#selfinfo").hide(500, function() {});
     var obj = document.getElementsByClassName("postarea");
     for (var i = 0; i < obj.length; i++) {
         obj[i].style.setProperty('top', '10%', 'important')
@@ -94,10 +94,10 @@ function look() {
     mo = 1;
     $("#mescroll").animate({ right: '0px' }).show();
     mescroll.hideTopBtn();
-    $("#search").show();
     $('#ch_li').animate({ left: '1000px' }).show();
     setTimeout(function() {
         $("#chat").hide();
+		$("#search").show();
     }, 750)
 }
 

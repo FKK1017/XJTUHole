@@ -17,6 +17,15 @@
 	function quit() {
 		mui.back();
 	}
+
+	function read_topic(n) {
+		mui.openWindow({
+			url:'./post.html?nickname=' + window.name + '&postnumber=' + n,
+			show:{
+				autoShow:true
+			}
+		})
+	}
     </script>
     <div class="main">
         <div class="tab-bar">
