@@ -114,7 +114,3 @@ function get_collect() {
         }
     })
 }
-
-function read_topic(n) {
-    window.location.href = './post.html?nickname=' + window.name + '&postnumber=' + n;
-}

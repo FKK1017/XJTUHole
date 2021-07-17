@@ -17,6 +17,20 @@
 	function quit() {
 		mui.back();
 	}
+	
+	function chat(n) {
+	    if (n == window.name) {
+	        alert("这是你自己的发表的哦~");
+	    } else {
+			mui.openWindow({
+				url:'./chat.html?nickname=' + window.name + '&who=' + n,
+				show:{
+					autoShow:true
+				}
+			})
+	    }
+	}
+	
     </script>
     <div class="main">
         <div class="nav-bar">
