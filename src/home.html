@@ -12,6 +12,7 @@
     <script src="./static/js/mescroll.min.js"></script>
     <script src="./static/js/home.js"></script>
     <script src="./static/js/jquery.rotate.js"></script>
+    <script src="./static/js/mui.js"></script>
 </head>
 
 <body onresize="win_ch()">
@@ -73,6 +74,73 @@
                     mescroll.endSuccess(10, true);
                 }, 1000)
             }
+			mui.init()
+			function read_topic(n) {
+				mui.openWindow({
+					url:'post.html?nickname=' + window.name + '&postnumber=' + n,
+					show:{
+						autoShow:true
+					}
+				})
+			}
+			function chat(n) {
+				mui.openWindow({
+					url:'./chat.html?nickname=' + window.name + '&who=' + n,
+					show:{
+						autoShow:true
+					}
+				})
+			}
+			
+			function info() {
+				mui.openWindow({
+					url:'./info.html?nickname=' + window.name,
+					show:{
+						autoShow:true
+					}
+				})
+			}
+			
+			function collect() {
+				mui.openWindow({
+					url:'./collect.html?nickname=' + window.name,
+					show:{
+						autoShow:true
+					}
+				})
+			}
+
+			var first = null;  
+			    mui.back=function(){
+			    if(!first){  
+			         first = new Date().getTime();  
+			             mui.toast('再按一次退出应用');  
+			                setTimeout(function(){  
+			                    first = null;  
+			                },2000);  
+			              } else {  
+			                  if(new Date().getTime() - first < 2000){  
+			                     plus.runtime.quit();  
+			                   }  
+			              }  
+			       };
+
+			function his() {
+				mui.openWindow({
+					url:'./history.html?nickname=' + window.name,
+					show:{
+						autoShow:true
+					}
+				})
+			}
+			function search() {
+				mui.openWindow({
+					url:'./search.html?nickname=' + window.name + '&key_word=' + $("#search").val(),
+					show:{
+						autoShow:true
+					}
+				})
+			}
         </script>
         <style>
             .mescroll {

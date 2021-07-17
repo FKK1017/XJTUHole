@@ -252,28 +252,6 @@ function choose_label(i) {
     window.label = i;
 }
 
-function read_topic(n) {
-    window.location.href = './post.html?nickname=' + window.name + '&postnumber=' + n;
-}
-
-function chat(n) {
-    window.location.href = './chat.html?nickname=' + window.name + '&who=' + n;
-}
-
-function info() {
-    window.location.href = './info.html?nickname=' + window.name;
-}
-
-function collect() {
-    window.location.href = './collect.html?nickname=' + window.name;
-}
-
-function his() {
-    window.location.href = './history.html?nickname=' + window.name;
-}
-
-
-
 function link(p) {
     var n = window.name;
     $.ajax(url + '/link', {
@@ -295,8 +273,4 @@ function win_ch() {
     } else {
         $(".navbar").show();
     }
-}
-
-function search() {
-    window.location.href = './search.html?nickname=' + window.name + '&key_word=' + $("#search").val();
 }

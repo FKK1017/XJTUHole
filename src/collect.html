@@ -7,17 +7,16 @@
         <title>collection</title>
         <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
         <script src="./static/js/collect.js"></script>
+    <script src="./static/js/mui.js"></script>
     </head>
 
     <body>
-        <script>
-            document.addEventListener("plusready", function() {
-            // 注册返回按键事件
-                plus.key.addEventListener('backbutton', function() {
-                    window.history.go(-1);
-                }, false);
-            });
-        </script>
+	<script>
+	mui.init()
+	function quit() {
+		mui.back();
+	}
+    </script>
         <div class="main">
             <div class="tab-bar">
                 <div class="back" onclick="quit()"><</div>

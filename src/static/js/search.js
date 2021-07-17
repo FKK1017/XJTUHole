@@ -43,7 +43,3 @@ $.ajax(url + '/search', {
 function read_topic(n) {
     window.location.href = './post.html?nickname=' + window.name + '&postnumber=' + n;
 }
-
-function quit() {
-    window.history.go(-1);
-}

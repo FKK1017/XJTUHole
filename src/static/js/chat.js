@@ -156,7 +156,3 @@ function send_chat()
         })
     }
 }
-
-function quit() {
-    window.history.go(-1);
-}
