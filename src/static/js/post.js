@@ -81,6 +81,7 @@ function main() {
         $("#title").html(data['title']);
         $("#content").html(data['content']);
         $("#post_img").attr("onclick", "chat('" + data['author_name'] + "')");
+		$("#taginfo").html(data['board']);
         var co = document.getElementById("com");
         if (data['collect']) {
             $("#Store").removeClass("StoreF").addClass("StoreT");
