@@ -54,7 +54,7 @@ function choose2() {
     $("#selfinfo").hide(500, function() {});
 
     $("#icon").rotate({ animateTo: 180, duration: 500 });
-    window.label = 'other';
+    window.label = '其他';
     window.now = 2;
     mescroll.hideTopBtn();
     var obj = document.getElementsByClassName("postarea");
