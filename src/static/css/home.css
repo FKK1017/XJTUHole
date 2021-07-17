@@ -579,11 +579,12 @@ li[class="content"] {
        .checkboxThree {
            width: 140px;
            height: 80px;
-           background: #457fb9;
+           background-color: #457fb9;
            /* margin: 20px 60px; */
            border-radius: 50px;
            position: relative;
            margin-top: 10%;
+           transition: background-color 0.5s;
        }
        /**
 * Create the text for the On position
@@ -627,8 +628,8 @@ li[class="content"] {
            position: absolute;
            top: 0px;
            z-index: 1;
-           left: 0px;
-           background: #ddd;
+           left: 60px;
+           background:salmon;
        }
        /**
 * Create the checkbox event for the label
@@ -636,6 +637,6 @@ li[class="content"] {
 */
        
        .checkboxThree input[type=checkbox]:checked + label {
-           left: 60px;
-           background: salmon;
+           left: 0px;
+           background: #ddd;
        }
