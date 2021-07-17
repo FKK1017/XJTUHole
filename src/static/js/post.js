@@ -131,7 +131,7 @@ function main() {
 }
 
 function comment() {
-    var c = $('textarea[id="comment"]').val();
+    var c = $('textarea[id="comment1"]').val();
     if (c != '') {
         var na = window.name;
         var nb = window.number;
@@ -146,7 +146,7 @@ function comment() {
             }),
         }).done(function(data) {
             if (data) {
-                $('textarea[id="comment"]').val("")
+                $('textarea[id="comment1"]').val("")
                 var co = document.getElementById("com");
                 if (comment_nub == 0) {
                     co.innerHTML = '';
@@ -168,6 +168,8 @@ function comment() {
                     '<button class="DislikeF" id="Dislike' + data['comment_id'] + '"onclick="DislikeCmt(' + data['comment_id'] + ')"></button>' +
                     '</div></div></div></li>';
                 comment_nub += 1;
+                $(".PingLun").show();
+                $(".PingLun1").hide();
             }
         })
     }
@@ -351,4 +353,21 @@ function getNewDate() {
         strHour + Verticalpoint + strMinute + Verticalpoint + strSeconde;
     //返回拼接字符串
     return NewDate;
+}
+
+function createEvent(type) {
+    var event;
+
+    try {
+        event = new Event(type);
+    } catch (e) {
+        event = doc.createEvent("Events");
+        event.initEvent(type, true, true);
+    }
+
+    return event;
+}
+function comment_win() {
+    $(".PingLun").hide();
+    $(".PingLun1").show();
 }

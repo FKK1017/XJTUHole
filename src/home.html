@@ -116,7 +116,15 @@
     <div id='up' style="height: 90%;display: none;">
         <div class="post-back"></div>
         <div class="postarea">
-            <input id="title" type="text" placeholder="标题" />
+            <div style="display:flex;margin-right: 0;">
+                <input id="title" type="text" placeholder="标题" />
+                <div class="opt">匿名</div>
+                <div class="checkboxThree">
+                    <input type="checkbox" value="1" id="checkboxThreeInput" name="" />
+                    <label for="checkboxThreeInput"></label>
+                </div>
+            </div>
+            
             <textarea row="20" id="content" placeholder="内容"></textarea><br>
             <div class="tags custom">
                 <a class="tag-blue" id="study" onclick="choose_label('study')">学习</a>
