@@ -5,10 +5,14 @@
     <meta charset="utf-8">
     <link rel="icon" href="./images/favicon.ico">
     <link rel="stylesheet" type="text/css" href="./static/css/post.css">
+    <!-- <link rel="stylesheet" type="text/css" href="./static/css/mescroll.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="./static/css/mui.min.css">
     <title>home</title>
     <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-    <script src="./static/js/post.js"></script>
+
     <script src="./static/js/mui.js"></script>
+    <script src="./static/js/mui.picker.min.js"></script>
+    <script src="./static/js/post.js"></script>
 </head>
 
 <body>
@@ -45,10 +49,39 @@
                     <input type="button" class="three" id="three">
                     <ul class="nav-box">
                         <li><input type="button" value="删除" onclick="del()"></li>
-                        <li><input type="button" value="举报"></li>
+                        <li><a href="#picture" class="mui-btn mui-btn-primary">举报</a></li>
                         <li><input type="button" value="不感兴趣"></li>
                     </ul>
                 </div>
+
+                <div id="picture" class="mui-popover mui-popover-action " style="right: 0;">
+                    <ul class="mui-table-view" style="max-height: none;">
+                        <li class="mui-table-view-cell">
+                            <a href="#" style="font-size: 2.5em;line-height: 2.5em;">色情低俗</a>
+                        </li>
+                        <li class="mui-table-view-cell">
+                            <a href="#" style="font-size: 2.5em;line-height: 2.5em;">垃圾广告</a>
+                        </li>
+                        <li class="mui-table-view-cell">
+                            <a href="#" style="font-size: 2.5em;line-height: 2.5em;">辱骂攻击</a>
+                        </li>
+                        <li class="mui-table-view-cell">
+                            <a href="#" style="font-size: 2.5em;line-height: 2.5em;">涉嫌犯罪</a>
+                        </li>
+                        <li class="mui-table-view-cell">
+                            <a href="#" style="font-size: 2.5em;line-height: 2.5em;">不实信息</a>
+                        </li>
+                        <li class="mui-table-view-cell">
+                            <a href="#" style="font-size: 2.5em;line-height: 2.5em;">其他</a>
+                        </li>
+                    </ul>
+                    <ul class="mui-table-view" style="margin: 8px;">
+                        <li class="mui-table-view-cell">
+                            <a href="#picture" style="font-size: 2.5em;line-height: 2.5em;"><b>取消</b></a>
+                        </li>
+                    </ul>
+                </div>
+
                 <p class="time" id="time"></p>
             </div>
             <div class="bodybar">
@@ -74,9 +107,9 @@
         </div>
         <div class="PingLun1">
             <textarea id='comment1' name="MyWord1" class="MyWord1" rows="3" cols="36" placeholder="写评论..."></textarea>
-            <input type="button" value="发送" onclick="comment()" class="submit">
+            <input type="button" value="发送" onclick="comment()"  style="font-size: 2.5em;" class="submit">
             <label class="anonymity">
-                <input type="checkbox" class="pot">
+                <input type="checkbox" class="pot" style="font-size: 2.5em;" id="ispot">
                 <label>匿名</label>
             </label>
         </div>
