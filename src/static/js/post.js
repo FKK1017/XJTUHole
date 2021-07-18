@@ -73,6 +73,11 @@ function main() {
             nu,
         }),
     }).done(function(data) {
+        var people = "匿名用户";
+        if (!data['is_anonymous']) {
+            people = data['author_name'];
+        }
+        $(".name").html(people);
         $("#time").html(data['post_time']);
         $("#title").html(data['title']);
         $("#content").html(data['content']);
@@ -98,7 +103,7 @@ function main() {
                     co.innerHTML = co.innerHTML + ' <li id="' + data['comment'][i]['comment_id'] + '"><div class="comment1"><div class="HeadBar1">' +
                         '<img src="./images/1.jpeg" alt="" onclick=chat("' + data['comment'][i]['author_name'] + '")>' +
                         '<p class="name1" >匿名用户</p>' + '<div class="more"><input type="button" class="three"><ul class="nav-box"><li><input type="button" value="删除" onclick="del_comment(\'' + data['comment'][i]['author_name'] + '\', \'' + data['comment'][i]['comment_id'] + '\')"></li>' +
-                        '<li><input type="button" value="举报"></li><li><input type="button" value="不感兴趣"></li></ul></div><p class="time1">' + data['comment'][i]['comment_time'] + '</p></div>' +
+                        '<li><input type="button" value="举报"></li></ul></div><p class="time1">' + data['comment'][i]['comment_time'] + '</p></div>' +
                         '<div class="BodyBar1"><p class="content1">' + data['comment'][i]['content'] + '</p>' +
                         '<div class="ZanBar"><button class="LikeT" id="Like' + data['comment'][i]['comment_id'] + '"onclick="LikeCmt(' + data['comment'][i]['comment_id'] + ')"></button>' +
                         '<button class="DislikeF" id="Dislike' + data['comment'][i]['comment_id'] + '"onclick="DislikeCmt(' + data['comment'][i]['comment_id'] + ')"></button>' +
@@ -107,7 +112,7 @@ function main() {
                     co.innerHTML = co.innerHTML + ' <li id="' + data['comment'][i]['comment_id'] + '"><div class="comment1"><div class="HeadBar1">' +
                         '<img src="./images/1.jpeg" alt="" onclick=chat("' + data['comment'][i]['author_name'] + '")>' +
                         '<p class="name1" >匿名用户</p>' + '<div class="more"><input type="button" class="three"><ul class="nav-box"><li><input type="button" value="删除" onclick="del_comment(\'' + data['comment'][i]['author_name'] + '\', \'' + data['comment'][i]['comment_id'] + '\')"></li>' +
-                        '<li><input type="button" value="举报"></li><li><input type="button" value="不感兴趣"></li></ul></div><p class="time1">' + data['comment'][i]['comment_time'] + '</p></div>' +
+                        '<li><input type="button" value="举报"></li></ul></div><p class="time1">' + data['comment'][i]['comment_time'] + '</p></div>' +
                         '<div class="BodyBar1"><p class="content1">' + data['comment'][i]['content'] + '</p>' +
                         '<div class="ZanBar"><button class="LikeF" id="Like' + data['comment'][i]['comment_id'] + '"onclick="LikeCmt(' + data['comment'][i]['comment_id'] + ')"></button>' +
                         '<button class="DislikeT" id="Dislike' + data['comment'][i]['comment_id'] + '"onclick="DislikeCmt(' + data['comment'][i]['comment_id'] + ')"></button>' +
@@ -116,7 +121,7 @@ function main() {
                     co.innerHTML = co.innerHTML + ' <li id="' + data['comment'][i]['comment_id'] + '"><div class="comment1"><div class="HeadBar1">' +
                         '<img src="./images/1.jpeg" alt="" onclick=chat("' + data['comment'][i]['author_name'] + '")>' +
                         '<p class="name1" >匿名用户</p>' + '<div class="more"><input type="button" class="three"><ul class="nav-box"><li><input type="button" value="删除" onclick="del_comment(\'' + data['comment'][i]['author_name'] + '\', \'' + data['comment'][i]['comment_id'] + '\')"></li>' +
-                        '<li><input type="button" value="举报"></li><li><input type="button" value="不感兴趣"></li></ul></div><p class="time1">' + data['comment'][i]['comment_time'] + '</p></div>' +
+                        '<li><input type="button" value="举报"></li></ul></div><p class="time1">' + data['comment'][i]['comment_time'] + '</p></div>' +
                         '<div class="BodyBar1"><p class="content1">' + data['comment'][i]['content'] + '</p>' +
                         '<div class="ZanBar"><button class="LikeF" id="Like' + data['comment'][i]['comment_id'] + '" onclick="LikeCmt(' + data['comment'][i]['comment_id'] + ')"></button>' +
                         '<button class="DislikeF" id="Dislike' + data['comment'][i]['comment_id'] + '"onclick="DislikeCmt(' + data['comment'][i]['comment_id'] + ')"></button>' +
@@ -156,7 +161,6 @@ function comment() {
                     '<ul class="nav-box">' +
                     '<li><input type="button" value="删除" onclick="del_comment(\'' + window.name + '\', \'' + data['comment_id'] + '\')"></li>' +
                     '<li><input type="button" value="举报"></li>' +
-                    '<li><input type="button" value="不感兴趣"></li>' +
                     '</ul></div>' +
                     '<p class="time1">' + getNewDate() + '</p></div>' +
                     '<div class="BodyBar1"><p class="content1">' +
