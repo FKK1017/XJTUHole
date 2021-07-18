@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <link rel="icon" href="./images/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="./static/css/mescroll.min.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/mui.min.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/admin.css">
+
+    <title>admin</title>
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="./static/js/mescroll.min.js"></script>
+    <script src="./static/js/mui.js"></script>
+    <script src="./static/js/mui.picker.min.js"></script>
+    <script src="./static/js/admin.js"></script>
+</head>
+
+
+<body>
+    <script>
+        mui.init()
+
+        
+        function quit() {
+            mui.back();
+        }
+    </script>
+    <div class="main">
+        <div class="tab-bar">
+            <div class="back" onclick="quit()"><</div>
+            <div>管理中心</div>
+        </div>
+        <div style="overflow-y: scroll;">
+            <ul id="tohandle">
+                <div class="to_admin">
+                    <div class="tag">举报类型:贴子</div>
+                    <div class="post">
+                        <div class="post_title">post_title</div>
+                        <div class="post_some_context">贴子的内容xxxx</div>
+                    </div>
+                    <div class="info">
+                        <div class="uper">举报人:郭德阳</div> 
+                        <div class="reason">举报原因:反动言论</div>
+                    </div>
+                    <!-- <div class="opt">
+                        <input type="button" id="admin_btn1" class="admin_btn" value="处理" style="
+                            font-size: 3em;
+                            text-align: center;
+                            background: transparent;
+                            border: none;
+                            color: red;
+                            width: 40%;
+                            height: 100px; ">
+                    </div> -->
+                    <div class="opt">
+                        <a href="#picture" class="mui-btn mui-btn-primary " style="
+                        font-size: 3em;
+                        background-color: transparent;
+                        border: none;
+                        color: red;
+                    ">处理</a>
+                    </div>
+                </div>
+                <div class="to_admin">
+                    <div class="tag">举报类型:评论</div>
+                    <div class="post">
+                        <div class="HeadBar">
+                            <p class="name">匿名用户</p>
+                            <p class="time">2021-07-18 16:43</p>
+                        </div>
+                        <div class="BodyBar">
+                            <p  class="content">评论内容啊啊啊啊</p>
+                        </div>
+                    
+                    </div>
+                    <div class="info">
+                        <div class="uper">举报人:郭德阳</div> 
+                        <div class="reason">举报原因:反动言论</div>
+                    </div>
+                    <!-- <div class="opt">
+                        <input type="button" id="admin_btn1" class="admin_btn" value="处理" style="
+                            font-size: 3em;
+                            text-align: center;
+                            background: transparent;
+                            border: none;
+                            color: red;
+                            width: 40%;
+                            height: 100px; ">
+                    </div> -->
+                    <div class="opt">
+                        <a href="#picture" class="mui-btn mui-btn-primary " style="
+                        font-size: 3em;
+                        background-color: transparent;
+                        border: none;
+                        color: red;
+                    ">处理</a>
+                    </div>
+                    
+
+                    <div id="picture" class="mui-popover mui-popover-action " style="">
+                        <ul class="mui-table-view" style="max-height: none;">
+                            <li class="mui-table-view-cell">
+                                <a href="#" style="font-size: 3em;line-height: 3em;padding-right: 80px;">删除</a>
+                            </li>
+                            <li class="mui-table-view-cell">
+                                <a href="#" style="font-size: 3em;line-height: 3em;padding-right: 80px;">禁言</a>
+                            </li>
+                            <li class="mui-table-view-cell">
+                                <a href="#" style="font-size: 3em;line-height: 3em;padding-right: 80px;">封号</a>
+                            </li>
+                            <li class="mui-table-view-cell">
+                                <a href="#" style="font-size: 3em;line-height: 3em;padding-right: 80px;">忽略</a>
+                            </li>
+                        </ul>
+                        <ul class="mui-table-view" style="margin: 8px;">
+                            <li class="mui-table-view-cell">
+                                <a href="#picture" style="font-size: 3em;line-height: 3em;padding-right: 80px;"><b>取消</b></a>
+                            </li>
+                        </ul></div>
+                </div>
+            
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

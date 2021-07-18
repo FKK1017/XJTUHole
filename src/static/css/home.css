@@ -199,6 +199,23 @@ body {
     width: 100%;
 }
 
+.admin {
+    display: flex;
+    height: 100px;
+    color: gray;
+    background-color: white;
+    border-bottom: 8px solid whitesmoke;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top: 30%;
+    height: 10%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    font-size: 4em;
+}
+
 input[class="btn"] {
     width: 35%;
     position: fixed;

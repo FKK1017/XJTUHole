@@ -110,6 +110,15 @@
 				})
 			}
 
+            function admin() {
+				mui.openWindow({
+					url:'./admin.html?nickname=' + window.name,
+					show:{
+						autoShow:true
+					}
+				})
+			}
+
 			var first = null;  
 			    mui.back=function(){
 			    if(!first){  
@@ -179,6 +188,8 @@
             <div class="item" onclick="his()">已发布</div>
             <div class="item" onclick="collect()">收藏</div>
         </div>
+        <div class="admin" onclick="toBeAdmin()" style="display: none;"">申请成为管理员</div>
+        <div class="admin" onclick="admin()" >管理举报信息</div>
         <input type="button" class="btn" value="退出登录" onclick="quit()">
     </div>
     <div id='up' style="height: 90%;display: none;">
