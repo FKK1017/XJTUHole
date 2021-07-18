@@ -32,7 +32,6 @@ function choose1() {
     }
     $("#look_chat").show(500, function() {});
     $("#selfinfo").hide();
-    mescroll.showTopBtn();
     window.now = 1;
 }
 
