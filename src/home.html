@@ -21,7 +21,7 @@
             <div onclick="look()">动态</div>
             <div onclick="privatechat()">私聊</div>
         </div>
-        <td><input id="search" type="search" placeholder="嘉然今天吃什么" /></td>
+        <input id="search" type="search" placeholder="嘉然今天吃什么" onclick="search()" />
         <div class="top-bar"></div>
         <div id="mescroll" class="mescroll">
             <ul id="re_li">
@@ -74,73 +74,76 @@
                     mescroll.endSuccess(10, true);
                 }, 1000)
             }
-			mui.init()
-			function read_topic(n) {
-				mui.openWindow({
-					url:'post.html?nickname=' + window.name + '&postnumber=' + n,
-					show:{
-						autoShow:true
-					}
-				})
-			}
-			function chat(n) {
-				mui.openWindow({
-					url:'./chat.html?nickname=' + window.name + '&who=' + n,
-					show:{
-						autoShow:true
-					}
-				})
-			}
-			
-			function info() {
-				mui.openWindow({
-					url:'./info.html?nickname=' + window.name,
-					show:{
-						autoShow:true
-					}
-				})
-			}
-			
-			function collect() {
-				mui.openWindow({
-					url:'./collect.html?nickname=' + window.name,
-					show:{
-						autoShow:true
-					}
-				})
-			}
+            mui.init()
 
-			var first = null;  
-			    mui.back=function(){
-			    if(!first){  
-			         first = new Date().getTime();  
-			             mui.toast('再按一次退出应用');  
-			                setTimeout(function(){  
-			                    first = null;  
-			                },2000);  
-			              } else {  
-			                  if(new Date().getTime() - first < 2000){  
-			                     plus.runtime.quit();  
-			                   }  
-			              }  
-			       };
+            function read_topic(n) {
+                mui.openWindow({
+                    url: 'post.html?nickname=' + window.name + '&postnumber=' + n,
+                    show: {
+                        autoShow: true
+                    }
+                })
+            }
 
-			function his() {
-				mui.openWindow({
-					url:'./history.html?nickname=' + window.name,
-					show:{
-						autoShow:true
-					}
-				})
-			}
-			function search() {
-				mui.openWindow({
-					url:'./search.html?nickname=' + window.name + '&key_word=' + $("#search").val(),
-					show:{
-						autoShow:true
-					}
-				})
-			}
+            function chat(n) {
+                mui.openWindow({
+                    url: './chat.html?nickname=' + window.name + '&who=' + n,
+                    show: {
+                        autoShow: true
+                    }
+                })
+            }
+
+            function info() {
+                mui.openWindow({
+                    url: './info.html?nickname=' + window.name,
+                    show: {
+                        autoShow: true
+                    }
+                })
+            }
+
+            function collect() {
+                mui.openWindow({
+                    url: './collect.html?nickname=' + window.name,
+                    show: {
+                        autoShow: true
+                    }
+                })
+            }
+
+            var first = null;
+            mui.back = function() {
+                if (!first) {
+                    first = new Date().getTime();
+                    mui.toast('再按一次退出应用');
+                    setTimeout(function() {
+                        first = null;
+                    }, 2000);
+                } else {
+                    if (new Date().getTime() - first < 2000) {
+                        plus.runtime.quit();
+                    }
+                }
+            };
+
+            function his() {
+                mui.openWindow({
+                    url: './history.html?nickname=' + window.name,
+                    show: {
+                        autoShow: true
+                    }
+                })
+            }
+
+            function search() {
+                mui.openWindow({
+                    url: './search.html?nickname=' + window.name,
+                    show: {
+                        autoShow: true
+                    }
+                })
+            }
         </script>
         <style>
             .mescroll {
@@ -192,7 +195,7 @@
                     <label for="checkboxThreeInput"></label>
                 </div>
             </div>
-            
+
             <textarea row="20" id="content" placeholder="内容"></textarea><br>
             <div class="tags custom">
                 <a class="tag-blue" id="学习" onclick="choose_label('学习')">学习</a>
