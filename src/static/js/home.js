@@ -8,6 +8,7 @@ var comment = document.getElementById('comment');
 var numLike = document.getElementById('numLike');
 var numStore = document.getElementById('numStore');
 var numComment = document.getElementById('numComment');
+window.label = '其他';
 
 if (u.indexOf("?") != -1) {
     var str = u.substr(1);
@@ -34,7 +35,7 @@ function choose1() {
         $("#icon").rotate({ animateTo: 0, duration: 500 });
         var obj = document.getElementsByClassName("postarea");
         for (var i = 0; i < obj.length; i++) {
-            obj[i].style.setProperty('top', '90%', 'important')
+            obj[i].style.setProperty('top', '100%', 'important')
         }
     }
     $("#look_chat").show(500, function() {});
@@ -43,11 +44,11 @@ function choose1() {
 }
 
 function choose2() {
+    document.getElementById(window.label).setAttribute('class', 'tag-green');
     $("#look_chat").hide(500, function() {});
     $("#up").show();
 
     $("#icon").rotate({ animateTo: 180, duration: 500 });
-    window.label = '其他';
     window.now = 2;
     mescroll.hideTopBtn();
     $("#selfinfo").hide(500, function() {});
@@ -62,7 +63,7 @@ function choose3() {
         $("#icon").rotate({ animateTo: 0, duration: 500 });
         var obj = document.getElementsByClassName("postarea");
         for (var i = 0; i < obj.length; i++) {
-            obj[i].style.setProperty('top', '90%', 'important')
+            obj[i].style.setProperty('top', '100%', 'important')
         }
     }
     mescroll.hideTopBtn();
@@ -258,3 +259,11 @@ function win_ch() {
         $(".navbar").show();
     }
 }
+
+function toBeAdmin() {
+    //申请成为管理员
+}
+
+// function admin() {
+//     //管理信息，跳转管理员页面
+// }
