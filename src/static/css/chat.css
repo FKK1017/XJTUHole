@@ -1,6 +1,7 @@
 body {
     background-image: url("../../images/bacground.jpg");
     background-repeat: no-repeat;
+    background-size: 100% 100%;
 }
 
 .chatitems {
@@ -251,7 +252,6 @@ body {
     height: 100px;
     padding-top: 50px;
     text-align: center;
-    display: none;
 }
 
 .msgem p {

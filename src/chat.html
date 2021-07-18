@@ -15,10 +15,11 @@
 
 <body>
     <script>
-        document.addEventListener("plusready", function() {
-            // 注册返回按键事件
-            plus.key.addEventListener('backbutton', quit(), false);
-        });
+        mui.init()
+
+        function quit() {
+            mui.back();
+        }
     </script>
     <div class="nav-bar">
         <div onclick="quit()" class="pointer"></div>
@@ -27,19 +28,10 @@
         </div>
     </div>
     <div id="mescroll" class="mescroll">
-        <div class="msgem">
-            <p>还没跟对方发过消息呐，快来聊一聊吧</p>
-            <img src="./images/chat.png">
-        </div>
         <ul class="msglist" id="msglist">
         </ul>
     </div>
     <script>
-        mui.init()
-
-        function quit() {
-            mui.back();
-        }
         var mescroll = new MeScroll("mescroll", { //第一个参数"mescroll"对应上面布局结构div的id (1.3.5版本支持传入dom对象)
             down: {
                 //clearEmptyId: "read", //上面的id
