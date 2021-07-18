@@ -1,9 +1,3 @@
-document.addEventListener("plusready", function() {
-    // 注册返回按键事件
-    plus.key.addEventListener('backbutton', function() {
-        window.history.go(-1);
-    }, false);
-});
 var url = 'http://111.229.120.197:8080';
 var u = decodeURI(location.search);
 var key_word;
@@ -41,9 +35,14 @@ $.ajax(url + '/search', {
 })
 
 function read_topic(n) {
-    window.location.href = './post.html?nickname=' + window.name + '&postnumber=' + n;
+	mui.openWindow({
+		url: 'post.html?nickname=' + window.name + '&postnumber=' + n,
+		show: {
+			autoShow: true
+		}
+	})
 }
 
 function quit() {
-    window.history.go(-1);
+    mui.back()
 }

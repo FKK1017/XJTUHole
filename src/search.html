@@ -16,14 +16,6 @@
 </head>
 
 <body>
-    <script>
-        document.addEventListener("plusready", function() {
-            // 注册返回按键事件
-            plus.key.addEventListener('backbutton', function() {
-                window.history.go(-1);
-            }, false);
-        });
-    </script>
     <input id="search" type="search" placeholder="嘉然今天吃什么" />
     <input id="cancel" type="button" class="btn" value="取消" onclick="quit()">
     <div class='bar0'></div>

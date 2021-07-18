@@ -1,8 +1,13 @@
 var labels = ['hot', '学习', '情感', '游戏', '运动', '吐槽', '求助', '整活', '其他'];
 var url = 'http://111.229.120.197:8080';
 var u = decodeURI(location.search);
-window.name =
-    window.label = labels[0];
+var theRequest = new Object();
+if (u.indexOf("?") != -1) {
+    var str = u.substr(1);
+    var strs = str.split("=");
+    window.name = strs[1];
+}
+window.label = labels[0];
 window.lastindex = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 window.onload = function() {
     var w = $("#header").width();
