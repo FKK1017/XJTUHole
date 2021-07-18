@@ -7,9 +7,16 @@
   <title>login</title>
   <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
   <script src="./static/js/index.js"></script>
+    <script src="./static/js/mui.js"></script>
 </head>
 
 <body onresize="win_ch()">
+  <script>
+    mui.init()
+    mui.back=function(){
+        plus.runtime.quit();
+    }
+  </script>
   <div class="loginview" id='login'>
     <div id="back" class="back" onclick="register_login()"><</div>
     <div class="xjxh">

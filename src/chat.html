@@ -9,17 +9,16 @@
   <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
   <script src="./static/js/mescroll.min.js"></script>
   <script src="./static/js/chat.js"></script>
+  <script src="./static/js/mui.js"></script>
 </head>
 
 <body>
-  <script>
-    document.addEventListener("plusready", function() {
-    // 注册返回按键事件
-        plus.key.addEventListener('backbutton', function() {
-            window.history.go(-1);
-        }, false);
-    });
-  </script>
+	<script>
+	mui.init()
+	function quit() {
+		mui.back();
+	}
+    </script>
   <div class="nav-bar">
     <div style="font-weight: bold; cursor: pointer" onclick="quit()">
         ＜
@@ -62,7 +61,7 @@
       .mescroll {
           position: fixed;
           /*top: 14%;*/
-          bottom: 6%;
+          bottom: 80px;
           height: auto;
       }
   </style>

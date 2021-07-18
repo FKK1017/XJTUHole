@@ -183,6 +183,16 @@ body {
     margin: 0 10px;
 }
 
+.tagF {
+    height: 80px;
+}
+
+.taginfo {
+    line-height: 80px;
+    font-size: 40px;
+    vertical-align: middle;
+}
+
 .LikeF {
     background-image: url("../../images/b_Zan.png");
 }
@@ -235,7 +245,7 @@ body {
     width: auto;
     height: auto;
     margin: 5px 20px;
-    position: relative;
+    position: absolute;
     top: 50%;
     transform: translateY(-50%);
     line-height: normal;
@@ -248,15 +258,36 @@ body {
     background-color: #e2e2e2;
 }
 
-.submit {
-    width: 100px;
-    height: 60px;
+.submit{
+    width: 200px;
+    height: 80px;
     background-color: skyblue;
     color: white;
     font-size: 2.5em;
-    margin-left: 40px;
     position: relative;
-    top: -30%;
+    top: 100px;
+    left: 75%;
+    border-radius: 10px;
+}
+
+.anonymity{
+    width: 200px;
+    height: 80px;
+    color: black;
+    font-size: 2.5em;
+    position: relative;
+    top: 20px;
+    left: 55%;
+    text-align: center;
+}
+.anonymity label{
+    width: 80px;
+    height: 80px;
+    font-size: 1.3em;
+}
+.pot{
+    width: 70px;
+    height: 60px;
 }
 
 .MyWord {
@@ -289,7 +320,6 @@ body {
     border: none
 }
 
-.submit,
 .comment,
 .store,
 .share {
@@ -300,15 +330,6 @@ body {
     background-size: 60%;
     background-position: 50% 0;
     background-color: #eeeeee;
-}
-
-.submit {
-    background-color: skyblue;
-    color: white;
-    font-size: 2.5em;
-    position: relative;
-    top: 50%;
-    transform: translateY(-80%);
 }
 
 .comment {

@@ -8,16 +8,29 @@
     <title>home</title>
     <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
     <script src="./static/js/post.js"></script>
+    <script src="./static/js/mui.js"></script>
 </head>
 
 <body>
-    <script>
-        document.addEventListener("plusready", function() {
-            // 注册返回按键事件
-            plus.key.addEventListener('backbutton', function() {
-                window.history.go(-1);
-            }, false);
-        });
+	<script>
+	mui.init()
+	function quit() {
+		mui.back();
+	}
+	
+	function chat(n) {
+	    if (n == window.name) {
+	        alert("这是你自己的发表的哦~");
+	    } else {
+			mui.openWindow({
+				url:'./chat.html?nickname=' + window.name + '&who=' + n,
+				show:{
+					autoShow:true
+				}
+			})
+	    }
+	}
+	
     </script>
     <div class="main">
         <div class="nav-bar">
@@ -27,7 +40,7 @@
         <div class="main-item">
             <div class="headbar">
                 <img src="./images/momo.png" alt="" id="post_img">
-                <p class="name">匿名用户</p>
+                <p class="name"></p>
                 <div class="more">
                     <input type="button" class="three" id="three">
                     <ul class="nav-box">
@@ -42,6 +55,10 @@
                 <h4 id="title"></h4>
                 <p id="content"></p>
                 <div class="ZanBar">
+                    <div id="tag1" style="float: left;display: flex;">
+                        <img src="./images/tag.png" alt="标签" class="tagF">
+                        <div class="taginfo" id="taginfo"></div>
+                    </div>
                     <button class="LikeF" id="Like" onclick="Like()"></button>
                     <button class="DislikeF" id="Dislike" onclick="Dislike()"></button>
                     <button class="StoreF" id="Store" onclick="Sclick()"></button>
@@ -49,15 +66,19 @@
             </div>
         </div>
         <div class="PingLun">
-            <textarea id='comment' name="MyWord" class="MyWord" placeholder="我来聊几句"></textarea>
-            <input type="button" value="评论" onclick="comment()" class="submit">
+            <textarea id='comment' name="MyWord" class="MyWord" placeholder="我来聊几句" onfocus="comment_win()"></textarea>
+            <!-- <input type="button" value="评论" onclick="comment()" class="submit"> -->
             <input type="button" class="comment">
             <input type="button" class="store">
             <input type="button" class="share">
         </div>
         <div class="PingLun1">
-            <textarea id='comment1' name="MyWord1" class="MyWord1" rows="3" cols="40" placeholder="写评论..."></textarea>
+            <textarea id='comment1' name="MyWord1" class="MyWord1" rows="3" cols="36" placeholder="写评论..."></textarea>
             <input type="button" value="发送" onclick="comment()" class="submit">
+            <label class="anonymity">
+                <input type="checkbox" class="pot">
+                <label>匿名</label>
+            </label>
         </div>
         <div class="comments">
             <ul id="com">

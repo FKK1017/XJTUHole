@@ -8,10 +8,6 @@ if (u.indexOf("?") != -1) {
 }
 get_collect();
 
-function quit() {
-    window.history.go(-1);
-}
-
 function modify() {
     console.log("modifying")
 
@@ -117,8 +113,4 @@ function get_collect() {
             }
         }
     })
-}
-
-function read_topic(n) {
-    window.location.href = './post.html?nickname=' + window.name + '&postnumber=' + n;
 }

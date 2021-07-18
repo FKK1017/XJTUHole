@@ -251,7 +251,7 @@ input[id="title"] {
     border: 1px solid #ccc;
     border-radius: 3px;
     padding: 14px 14px;
-    width: 85%;
+    width: 55%;
     font-size: 3em;
     margin-top: 10%;
     margin-left: 5%;
@@ -381,6 +381,7 @@ li[class="content"] {
     margin: 20px;
     border-top: 3px solid transparent;
     text-indent: 1em;
+    line-height: 50px;
     /*background-color:rgb(221,213,213);
 	*/
 }
@@ -406,6 +407,11 @@ li[class="content"] {
 .homeStore {
     height: 50px;
     margin-left: 10px;
+}
+
+.homeTag {
+    height: 50px;
+    padding-left: 20px;
 }
 
 .add {
@@ -551,3 +557,86 @@ li[class="content"] {
     transition: top 1s;
     opacity: 0.75;
 }
+
+.opt {
+    line-height: 80px;
+    margin-top: 10%;
+    font-size: 3.1em;
+    padding-right: 2%;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Start by hiding the checkboxes
+*/
+       
+       input[type=checkbox] {
+           visibility: hidden;
+       }
+/* Checkbox Three
+*/
+       
+       .checkboxThree {
+           width: 140px;
+           height: 80px;
+           background-color: #457fb9;
+           /* margin: 20px 60px; */
+           border-radius: 50px;
+           position: relative;
+           margin-top: 10%;
+           transition: background-color 0.5s;
+       }
+       /**
+* Create the text for the On position
+*/
+       
+       /* .checkboxThree:before {
+           position: absolute;
+           top: 12px;
+           left: 13px;
+           height: 2px;
+           color: #26ca28;
+           font-size: 16px;
+       } */
+       /**
+* Create the label for the off position
+*/
+       
+       /* .checkboxThree:after {
+           position: absolute;
+           top: 12px;
+           left: 84px;
+           height: 2px;
+           color: #ddd;
+           font-size: 16px;
+       } */
+       /**
+* Create the pill to click
+*/
+       
+       .checkboxThree label {
+           display: block;
+           width: 80px;
+           height: 80px;
+           border-radius: 40px;
+           -webkit-transition: all .5s ease;
+           -moz-transition: all .5s ease;
+           -o-transition: all .5s ease;
+           -ms-transition: all .5s ease;
+           transition: all .5s ease;
+           cursor: pointer;
+           position: absolute;
+           top: 0px;
+           z-index: 1;
+           left: 60px;
+           background:salmon;
+       }
+       /**
+* Create the checkbox event for the label
+* @type {[type]}
+*/
+       
+       .checkboxThree input[type=checkbox]:checked + label {
+           left: 0px;
+           background: #ddd;
+       }

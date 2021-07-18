@@ -39,11 +39,7 @@ function choose1() {
         }
     }
     $("#look_chat").show(500, function() {});
-    $("#search").show();
     $("#selfinfo").hide();
-    $("#up").hide(500, function() {});
-    $("#read").show();
-    $("#chat").hide();
     mescroll.showTopBtn();
     window.now = 1;
 }
@@ -51,12 +47,12 @@ function choose1() {
 function choose2() {
     $("#look_chat").hide(500, function() {});
     $("#up").show();
-    $("#selfinfo").hide(500, function() {});
 
     $("#icon").rotate({ animateTo: 180, duration: 500 });
-    window.label = 'other';
+    window.label = '其他';
     window.now = 2;
     mescroll.hideTopBtn();
+    $("#selfinfo").hide(500, function() {});
     var obj = document.getElementsByClassName("postarea");
     for (var i = 0; i < obj.length; i++) {
         obj[i].style.setProperty('top', '10%', 'important')
@@ -94,10 +90,10 @@ function look() {
     mo = 1;
     $("#mescroll").animate({ right: '0px' }).show();
     mescroll.hideTopBtn();
-    $("#search").show();
     $('#ch_li').animate({ left: '1000px' }).show();
     setTimeout(function() {
         $("#chat").hide();
+		$("#search").show();
     }, 750)
 }
 
@@ -154,7 +150,9 @@ function gettopics(w) {
                 for (var i = 0; i < data.length; i++) {
                     re.innerHTML = re.innerHTML + '<div class="post" id="' + data[i]['post_id'] + '" onclick="read_topic(' + data[i]['post_id'] + ')"><div class="post_title">' + data[i]['title'] + '</div>' +
                         '<div class="post_some_context">' + data[i]['content'] + '</div>' +
-                        '<div class="post_info"><div id="thumb1" style="float: right;display: flex;">' + '<img id="zan" src="./images/b_Zan.png" alt="" class="homeLike">' + '<div class="num">' + data[i]['like_count'] + '</div>' + '</div>' +
+                        '<div class="post_info">' + 
+                        '<div id="tag1" style="float: left;display: flex;">' + '<img id="tag" src="./images/tag.png" alt="" class="homeTag">' + '<div class="num">' + data[i]['board'] + '</div>' + '</div>' +
+                        '<div id="thumb1" style="float: right;display: flex;">' + '<img id="zan" src="./images/b_Zan.png" alt="" class="homeLike">' + '<div class="num">' + data[i]['like_count'] + '</div>' + '</div>' +
                         '<div id="comment1" style="float: right;display: flex;">' + '<img id="store" src="./images/b_Store1.png" alt="" class="homeStore">' + '<div class="num">' + data[i]['collect_count'] + '</div>' + '</div>' +
                         '<div id="share1" style="float: right;display: flex;">' + '<img id="comment" src="./images/Comment.png" alt="" class="homeComment">' + '<div class="num">' + data[i]['comment_count'] + '</div></div></div></div>';
                 }
@@ -165,10 +163,12 @@ function gettopics(w) {
             } else if (w == 0) {
                 for (var i = data.length - 1; i >= 0; i--) {
                     re.innerHTML = '<div class="post" id="' + data[i]['post_id'] + '" onclick="read_topic(' + data[i]['post_id'] + ')"><div class="post_title">' + data[i]['title'] + '</div>' +
-                        '<div class="post_some_context">' + data[i]['content'] + '</div>' +
-                        '<div class="post_info"><div id="thumb1" style="float: right;">' + '<img id="zan" src="./images/b_Zan.png" alt="" class="homeLike">' + data[i]['like_count'] + '</div>' +
-                        '<div id="comment1" style="float: right;">' + '<img id="store" src="./images/b_Store1.png" alt="" class="homeStore">' + data[i]['collect_count'] + '</div>' +
-                        '<div id="share1" style="float: right;">' + '<img id="comment" src="./images/Comment.png" alt="" class="homeComment">' + data[i]['comment_count'] + '</div></div></div>' + re.innerHTML;
+                    '<div class="post_some_context">' + data[i]['content'] + '</div>' +
+                    '<div class="post_info">' + 
+                    '<div id="tag1" style="float: left;display: flex;">' + '<img id="tag" src="./images/tag.png" alt="" class="homeTag">' + '<div class="num">' + data[i]['board'] + '</div>' + '</div>' +
+                    '<div id="thumb1" style="float: right;display: flex;">' + '<img id="zan" src="./images/b_Zan.png" alt="" class="homeLike">' + '<div class="num">' + data[i]['like_count'] + '</div>' + '</div>' +
+                    '<div id="comment1" style="float: right;display: flex;">' + '<img id="store" src="./images/b_Store1.png" alt="" class="homeStore">' + '<div class="num">' + data[i]['collect_count'] + '</div>' + '</div>' +
+                    '<div id="share1" style="float: right;display: flex;">' + '<img id="comment" src="./images/Comment.png" alt="" class="homeComment">' + '<div class="num">' + data[i]['comment_count'] + '</div></div></div></div>' + re.innerHTML;
                 }
                 window.head = data[0]['post_id'].toString();
             }
@@ -215,6 +215,7 @@ function uptopic() {
     var t = $('input[id="title"]').val();
     var c = $('textarea[id="content"]').val();
     var l = window.label;
+    var uname = !document.getElementById("checkboxThreeInput").checked;
     if (t == "") {
         alert("想一个有趣的标题吧，这样子才会有更多人关注哦！");
     } else if (c == "") {
@@ -229,6 +230,7 @@ function uptopic() {
                 t,
                 c,
                 l,
+                uname,
             }),
         }).done(function(data) {
             if (data) {
@@ -249,28 +251,6 @@ function choose_label(i) {
     document.getElementById(i).setAttribute('class', 'tag-green');
     window.label = i;
 }
-
-function read_topic(n) {
-    window.location.href = './post.html?nickname=' + window.name + '&postnumber=' + n;
-}
-
-function chat(n) {
-    window.location.href = './chat.html?nickname=' + window.name + '&who=' + n;
-}
-
-function info() {
-    window.location.href = './info.html?nickname=' + window.name;
-}
-
-function collect() {
-    window.location.href = './collect.html?nickname=' + window.name;
-}
-
-function his() {
-    window.location.href = './history.html?nickname=' + window.name;
-}
-
-
 
 function link(p) {
     var n = window.name;
@@ -293,8 +273,4 @@ function win_ch() {
     } else {
         $(".navbar").show();
     }
-}
-
-function search() {
-    window.location.href = './search.html?nickname=' + window.name + '&key_word=' + $("#search").val();
 }

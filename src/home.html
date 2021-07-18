@@ -12,6 +12,7 @@
     <script src="./static/js/mescroll.min.js"></script>
     <script src="./static/js/home.js"></script>
     <script src="./static/js/jquery.rotate.js"></script>
+    <script src="./static/js/mui.js"></script>
 </head>
 
 <body onresize="win_ch()">
@@ -73,6 +74,73 @@
                     mescroll.endSuccess(10, true);
                 }, 1000)
             }
+			mui.init()
+			function read_topic(n) {
+				mui.openWindow({
+					url:'post.html?nickname=' + window.name + '&postnumber=' + n,
+					show:{
+						autoShow:true
+					}
+				})
+			}
+			function chat(n) {
+				mui.openWindow({
+					url:'./chat.html?nickname=' + window.name + '&who=' + n,
+					show:{
+						autoShow:true
+					}
+				})
+			}
+			
+			function info() {
+				mui.openWindow({
+					url:'./info.html?nickname=' + window.name,
+					show:{
+						autoShow:true
+					}
+				})
+			}
+			
+			function collect() {
+				mui.openWindow({
+					url:'./collect.html?nickname=' + window.name,
+					show:{
+						autoShow:true
+					}
+				})
+			}
+
+			var first = null;  
+			    mui.back=function(){
+			    if(!first){  
+			         first = new Date().getTime();  
+			             mui.toast('再按一次退出应用');  
+			                setTimeout(function(){  
+			                    first = null;  
+			                },2000);  
+			              } else {  
+			                  if(new Date().getTime() - first < 2000){  
+			                     plus.runtime.quit();  
+			                   }  
+			              }  
+			       };
+
+			function his() {
+				mui.openWindow({
+					url:'./history.html?nickname=' + window.name,
+					show:{
+						autoShow:true
+					}
+				})
+			}
+			function search() {
+				mui.openWindow({
+					url:'./search.html?nickname=' + window.name + '&key_word=' + $("#search").val(),
+					show:{
+						autoShow:true
+					}
+				})
+			}
         </script>
         <style>
             .mescroll {
@@ -116,17 +184,25 @@
     <div id='up' style="height: 90%;display: none;">
         <div class="post-back"></div>
         <div class="postarea">
-            <input id="title" type="text" placeholder="标题" />
+            <div style="display:flex;margin-right: 0;">
+                <input id="title" type="text" placeholder="标题" />
+                <div class="opt">匿名</div>
+                <div class="checkboxThree">
+                    <input type="checkbox" value="1" id="checkboxThreeInput" name="" />
+                    <label for="checkboxThreeInput"></label>
+                </div>
+            </div>
+            
             <textarea row="20" id="content" placeholder="内容"></textarea><br>
             <div class="tags custom">
-                <a class="tag-blue" id="study" onclick="choose_label('study')">学习</a>
-                <a class="tag-blue" id="love" onclick="choose_label('love')">情感</a>
-                <a class="tag-blue" id="game" onclick="choose_label('game')">游戏</a>
-                <a class="tag-blue" id="sport" onclick="choose_label('sport')">运动</a>
-                <a class="tag-blue" id="fxxk" onclick="choose_label('fxxk')">吐槽</a>
-                <a class="tag-blue" id="help" onclick="choose_label('help')">求助</a>
-                <a class="tag-blue" id="fun" onclick="choose_label('fun')">整活</a>
-                <a class="tag-green" id="other" onclick="choose_label('other')">其他</a>
+                <a class="tag-blue" id="学习" onclick="choose_label('学习')">学习</a>
+                <a class="tag-blue" id="情感" onclick="choose_label('情感')">情感</a>
+                <a class="tag-blue" id="游戏" onclick="choose_label('游戏')">游戏</a>
+                <a class="tag-blue" id="运动" onclick="choose_label('运动')">运动</a>
+                <a class="tag-blue" id="吐槽" onclick="choose_label('吐槽')">吐槽</a>
+                <a class="tag-blue" id="求助" onclick="choose_label('求助')">求助</a>
+                <a class="tag-blue" id="整活" onclick="choose_label('整活')">整活</a>
+                <a class="tag-green" id="其他" onclick="choose_label('其他')">其他</a>
             </div>
             <input type="button" class="post-btn" value="发表" onclick="uptopic()">
             <!--
