@@ -80,6 +80,11 @@ function main() {
             nu,
         }),
     }).done(function(data) {
+        var people = "匿名用户";
+        if (!data['is_anonymous']) {
+            people = data['author_name'];
+        }
+        $(".name").html(people);
         $("#time").html(data['post_time']);
         $("#title").html(data['title']);
         $("#content").html(data['content']);
@@ -101,6 +106,10 @@ function main() {
             var l = data['comment'].length;
             comment_nub = data['comment'].length;
             for (var i = 0; i < l; i++) {
+                let pe = "匿名用户";
+                if (!data['comment'][i]['is_anonymous']) {
+                    pe = data['comment'][i]['author_name'];
+                }
                 if (data['comment'][i]['like'] == true) {
                     co.innerHTML = co.innerHTML + ' <li id="' + data['comment'][i]['comment_id'] + '"><div class="comment1"><div class="HeadBar1">' +
                         '<img src="./images/1.jpeg" alt="" onclick=chat("' + data['comment'][i]['author_name'] + '")>' +
@@ -139,6 +148,7 @@ function comment() {
     if (c != '') {
         var na = window.name;
         var nb = window.number;
+        var uname = document.getElementById("pot").checked;
         $.ajax(url + '/upcomment', {
             async: true,
             type: "POST",
@@ -147,23 +157,28 @@ function comment() {
                 c,
                 na,
                 nb,
+                uname,
             }),
         }).done(function(data) {
             if (data) {
+                var people = "匿名用户";
                 $('textarea[id="comment1"]').val("")
                 var co = document.getElementById("com");
+                if (!uname)
+                {
+                    var people = window.name;
+                }
                 if (comment_nub == 0) {
                     co.innerHTML = '';
                 }
                 co.innerHTML = co.innerHTML + ' <li id="' + data['comment_id'] + '"><div class="comment1"><div class="HeadBar1">' +
                     '<img src="./images/1.jpeg" alt="" onclick=chat("' + window.name + '")>' +
-                    '<p class="name1">匿名用户</p>' +
+                    '<p class="name1">'+ people + '</p>' +
                     '<div class="more">' +
                     '<input type="button" class="three">' +
                     '<ul class="nav-box">' +
                     '<li><input type="button" value="删除" onclick="del_comment(\'' + window.name + '\', \'' + data['comment_id'] + '\')"></li>' +
                     '<li><input type="button" value="举报"></li>' +
-                    '<li><input type="button" value="不感兴趣"></li>' +
                     '</ul></div>' +
                     '<p class="time1">' + getNewDate() + '</p></div>' +
                     '<div class="BodyBar1"><p class="content1">' +
@@ -176,6 +191,9 @@ function comment() {
                 $(".PingLun1").hide();
             }
         })
+    }
+    else {
+        alert('不可以什么都不说就发表哦~');
     }
 }
 

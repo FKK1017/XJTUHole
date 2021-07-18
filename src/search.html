@@ -6,37 +6,370 @@
     <title>Search</title>
     <link rel="icon" href="./images/favicon.ico">
     <link rel="stylesheet" href="./static/css/search.css">
+    <link rel="stylesheet" href="./static/css/swiper-bundle.min.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/mescroll.min.css">
+    <script src="./static/js/mescroll.min.js"></script>
     <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="./static/js/swiper-bundle.min.js"></script>
     <script src="./static/js/search.js"></script>
-	<script src="./static/js/mui.js"></script>
+    <script src="./static/js/mui.js"></script>
 </head>
 
 <body>
-	<script>
-	mui.init()
-	function quit() {
-		mui.back();
-	}
-
-	function read_topic(n) {
-		mui.openWindow({
-			url:'./post.html?nickname=' + window.name + '&postnumber=' + n,
-			show:{
-				autoShow:true
-			}
-		})
-	}
+    <script>
+        document.addEventListener("plusready", function() {
+            // 注册返回按键事件
+            plus.key.addEventListener('backbutton', function() {
+                window.history.go(-1);
+            }, false);
+        });
     </script>
-    <div class="main">
-        <div class="tab-bar">
-            <div class="back" onclick="quit()"></div>
-            <div>搜索结果</div>
-            <div class="save" onclick="save()" id="save" style="display: none;">完成</div>
+    <input id="search" type="search" placeholder="嘉然今天吃什么" />
+    <input id="cancel" type="button" class="btn" value="取消" onclick="quit()">
+    <div class='bar0'></div>
+    <div id="header" class="tabs">
+        <ul class="list">
+            <li class="item item-active" id='item0'>热榜</li>
+            <li class="item" id='item1'>学习</li>
+            <li class="item" id='item2'>情感</li>
+            <li class="item" id='item3'>游戏</li>
+            <li class="item" id='item4'>运动</li>
+            <li class="item" id='item5'>吐槽</li>
+            <li class="item" id='item6'>求助</li>
+            <li class="item" id='item7'>整活</li>
+            <li class="item" id='item8'>其他</li>
+        </ul>
+    </div>
+
+    <div id="tabs-container" class="swiper-container swiper-container-horizontal">
+        <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(0px, 0px, 0px);">
+            <div class="swiper-slide">
+                <div id="mescroll0" class="mescroll">
+                    <ul class="news-list" id="hot">
+                    </ul>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div id="mescroll1" class="mescroll">
+                    <div id="mescroll" class="mescroll">
+                        <ul class="re_li" id="学习">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div id="mescroll2" class="mescroll">
+                    <div id="mescroll" class="mescroll">
+                        <ul class="re_li" id="情感">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div id="mescroll3" class="mescroll">
+                    <div id="mescroll" class="mescroll">
+                        <ul class="re_li" id="游戏">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div id="mescroll4" class="mescroll">
+                    <div id="mescroll" class="mescroll">
+                        <ul class="re_li" id="运动">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div id="mescroll5" class="mescroll">
+                    <div id="mescroll" class="mescroll">
+                        <ul class="re_li" id="吐槽">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div id="mescroll6" class="mescroll">
+                    <div id="mescroll" class="mescroll">
+                        <ul class="re_li" id="求助">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div id="mescroll7" class="mescroll">
+                    <div id="mescroll" class="mescroll">
+                        <ul class="re_li" id="整活">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div id="mescroll8" class="mescroll">
+                    <div id="mescroll" class="mescroll">
+                        <ul class="re_li" id="其他">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <script>
+                mui.init();
+                var mescroll0 = new MeScroll("mescroll0", {
+                    up: {
+                        callback: upCallback0,
+                        toTop: {
+                            src: "./images/BackTop.png"
+                        }
+                    },
+
+                    down: {
+                        callback: downCallback0
+                    }
+                });
+
+                var mescroll1 = new MeScroll("mescroll1", {
+                    up: {
+                        callback: upCallback1,
+                        toTop: {
+                            src: "./images/BackTop.png"
+                        }
+                    },
+
+                    down: {
+                        callback: downCallback1
+                    }
+                });
+
+                var mescroll2 = new MeScroll("mescroll2", {
+                    up: {
+                        callback: upCallback2,
+                        toTop: {
+                            src: "./images/BackTop.png"
+                        }
+                    },
+
+                    down: {
+                        callback: downCallback2
+                    }
+                });
+
+                var mescroll3 = new MeScroll("mescroll3", {
+                    up: {
+                        callback: upCallback3,
+                        toTop: {
+                            src: "./images/BackTop.png"
+                        }
+                    },
+
+                    down: {
+                        callback: downCallback3
+                    }
+                });
+                var mescroll4 = new MeScroll("mescroll4", {
+                    up: {
+                        callback: upCallback4,
+                        toTop: {
+                            src: "./images/BackTop.png"
+                        }
+                    },
+
+                    down: {
+                        callback: downCallback4
+                    }
+                });
+                var mescroll5 = new MeScroll("mescroll5", {
+                    up: {
+                        callback: upCallback5,
+                        toTop: {
+                            src: "./images/BackTop.png"
+                        }
+                    },
+
+                    down: {
+                        callback: downCallback5
+                    }
+                });
+                var mescroll6 = new MeScroll("mescroll6", {
+                    up: {
+                        callback: upCallback6,
+                        toTop: {
+                            src: "./images/BackTop.png"
+                        }
+                    },
+
+                    down: {
+                        callback: downCallback6
+                    }
+                });
+                var mescroll7 = new MeScroll("mescroll7", {
+                    up: {
+                        callback: upCallback7,
+                        toTop: {
+                            src: "./images/BackTop.png"
+                        }
+                    },
+
+                    down: {
+                        callback: downCallback7
+                    }
+                });
+                var mescroll8 = new MeScroll("mescroll8", {
+                    up: {
+                        callback: upCallback8,
+                        toTop: {
+                            src: "./images/BackTop.png"
+                        }
+                    },
+
+                    down: {
+                        callback: downCallback8
+                    }
+                });
+
+                var timer0, timer1, timer2, timer3, timer4, timer5, timer6, timer7, timer8;
+
+                var set = 0;
+
+                function upCallback0() {
+                    if (timer0) {
+                        clearTimeout(timer0);
+                    }
+                    timer0 = setTimeout(function() {
+                        console.log('up');
+                        if (set++ >= 9) {
+                            gettopics(2, 0);
+                        }
+                        mescroll0.endSuccess(10, true);
+                    }, 1000)
+                }
+
+                function downCallback0() {
+                    mescroll0.endSuccess();
+                }
+
+                function upCallback1() {
+                    if (timer1) {
+                        clearTimeout(timer1);
+                    }
+                    timer1 = setTimeout(function() {
+                        console.log('up');
+                        if (set++ >= 9) gettopics(2, 1);
+                        mescroll1.endSuccess(10, true);
+                    }, 1000)
+                }
+
+                function downCallback1() {
+                    mescroll1.endSuccess();
+                }
+
+                function upCallback2() {
+                    if (timer2) {
+                        clearTimeout(timer2);
+                    }
+                    timer2 = setTimeout(function() {
+                        console.log('up');
+                        if (set++ >= 9) gettopics(2, 2);
+                        mescroll2.endSuccess(10, true);
+                    }, 1000)
+                }
+
+                function downCallback2() {
+                    mescroll2.endSuccess();
+                }
+
+                function upCallback3() {
+                    if (timer3) {
+                        clearTimeout(timer3);
+                    }
+                    timer3 = setTimeout(function() {
+                        console.log('up');
+                        if (set++ >= 9) gettopics(2, 3);
+                        mescroll3.endSuccess(10, true);
+                    }, 1000)
+                }
+
+                function downCallback3() {
+                    mescroll3.endSuccess();
+                }
+
+                function upCallback4() {
+                    if (timer4) {
+                        clearTimeout(timer4);
+                    }
+                    timer4 = setTimeout(function() {
+                        console.log('up');
+                        if (set++ >= 9) gettopics(2, 4);
+                        mescroll4.endSuccess(10, true);
+                    }, 1000)
+                }
+
+                function downCallback4() {
+                    mescroll4.endSuccess();
+                }
+
+                function upCallback5() {
+                    if (timer5) {
+                        clearTimeout(timer5);
+                    }
+                    timer5 = setTimeout(function() {
+                        console.log('up');
+                        if (set++ >= 9) gettopics(2, 5);
+                        mescroll5.endSuccess(10, true);
+                    }, 1000)
+                }
+
+                function downCallback5() {
+                    mescroll5.endSuccess();
+                }
+
+                function upCallback6() {
+                    if (timer6) {
+                        clearTimeout(timer6);
+                    }
+                    timer6 = setTimeout(function() {
+                        console.log('up');
+                        if (set++ >= 9) gettopics(2, 6);
+                        mescroll6.endSuccess(10, true);
+                    }, 1000)
+                }
+
+                function downCallback6() {
+                    mescroll6.endSuccess();
+                }
+
+                function upCallback7() {
+                    if (timer7) {
+                        clearTimeout(timer7);
+                    }
+                    timer7 = setTimeout(function() {
+                        console.log('up');
+                        if (set++ >= 9) gettopics(2, 7);
+                        mescroll7.endSuccess(10, true);
+                    }, 1000)
+                }
+
+                function downCallback7() {
+                    mescroll7.endSuccess();
+                }
+
+                function upCallback8() {
+                    if (timer8) {
+                        clearTimeout(timer0);
+                    }
+                    timer8 = setTimeout(function() {
+                        console.log('up');
+                        if (set++ >= 9) gettopics(2, 8);
+                        mescroll8.endSuccess(10, true);
+                    }, 1000)
+                }
+
+                function downCallback8() {
+                    mescroll8.endSuccess();
+                }
+            </script>
         </div>
-        <div style="overflow-y: scroll;">
-            <ul id="mycollect_li">
-            </ul>
-        </div>
+    </div>
     </div>
 </body>
 
