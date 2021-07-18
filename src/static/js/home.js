@@ -16,7 +16,14 @@ if (u.indexOf("?") != -1) {
 }
 
 gettopics('1');
-var int = self.setInterval("listen()", 10000);
+
+$(function() {
+    $(document).keydown(function(event) {
+        if (event.keyCode == 13) {
+            search();
+        }
+    });
+});
 
 function test() {
     console.log('test')
@@ -84,30 +91,12 @@ function look() {
     $('#ch_li').animate({ left: '1000px' }).show();
     setTimeout(function() {
         $("#chat").hide();
-        $("#search").show();
+		$("#search").show();
     }, 750)
 }
 
 function quit() {
     window.location.href = './index.html?';
-}
-
-function listen() {
-    /*var n = window.name;
-    $.ajax(url + '/askchat', {
-        async: true,
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify({
-            n,
-        }),
-    }).done(function(data) {
-        if (data['have_message']) {
-            console.log(data['message_count']);
-        } else {
-            console.log('0');
-        }
-    })*/
 }
 
 function gettopics(w) {
@@ -141,7 +130,7 @@ function gettopics(w) {
                 for (var i = 0; i < data.length; i++) {
                     re.innerHTML = re.innerHTML + '<div class="post" id="' + data[i]['post_id'] + '" onclick="read_topic(' + data[i]['post_id'] + ')"><div class="post_title">' + data[i]['title'] + '</div>' +
                         '<div class="post_some_context">' + data[i]['content'] + '</div>' +
-                        '<div class="post_info">' +
+                        '<div class="post_info">' + 
                         '<div id="tag1" style="float: left;display: flex;">' + '<img id="tag" src="./images/tag.png" alt="" class="homeTag">' + '<div class="num">' + data[i]['board'] + '</div>' + '</div>' +
                         '<div id="thumb1" style="float: right;display: flex;">' + '<img id="zan" src="./images/b_Zan.png" alt="" class="homeLike">' + '<div class="num">' + data[i]['like_count'] + '</div>' + '</div>' +
                         '<div id="comment1" style="float: right;display: flex;">' + '<img id="store" src="./images/b_Store1.png" alt="" class="homeStore">' + '<div class="num">' + data[i]['collect_count'] + '</div>' + '</div>' +
@@ -154,12 +143,12 @@ function gettopics(w) {
             } else if (w == 0) {
                 for (var i = data.length - 1; i >= 0; i--) {
                     re.innerHTML = '<div class="post" id="' + data[i]['post_id'] + '" onclick="read_topic(' + data[i]['post_id'] + ')"><div class="post_title">' + data[i]['title'] + '</div>' +
-                        '<div class="post_some_context">' + data[i]['content'] + '</div>' +
-                        '<div class="post_info">' +
-                        '<div id="tag1" style="float: left;display: flex;">' + '<img id="tag" src="./images/tag.png" alt="" class="homeTag">' + '<div class="num">' + data[i]['board'] + '</div>' + '</div>' +
-                        '<div id="thumb1" style="float: right;display: flex;">' + '<img id="zan" src="./images/b_Zan.png" alt="" class="homeLike">' + '<div class="num">' + data[i]['like_count'] + '</div>' + '</div>' +
-                        '<div id="comment1" style="float: right;display: flex;">' + '<img id="store" src="./images/b_Store1.png" alt="" class="homeStore">' + '<div class="num">' + data[i]['collect_count'] + '</div>' + '</div>' +
-                        '<div id="share1" style="float: right;display: flex;">' + '<img id="comment" src="./images/Comment.png" alt="" class="homeComment">' + '<div class="num">' + data[i]['comment_count'] + '</div></div></div></div>' + re.innerHTML;
+                    '<div class="post_some_context">' + data[i]['content'] + '</div>' +
+                    '<div class="post_info">' + 
+                    '<div id="tag1" style="float: left;display: flex;">' + '<img id="tag" src="./images/tag.png" alt="" class="homeTag">' + '<div class="num">' + data[i]['board'] + '</div>' + '</div>' +
+                    '<div id="thumb1" style="float: right;display: flex;">' + '<img id="zan" src="./images/b_Zan.png" alt="" class="homeLike">' + '<div class="num">' + data[i]['like_count'] + '</div>' + '</div>' +
+                    '<div id="comment1" style="float: right;display: flex;">' + '<img id="store" src="./images/b_Store1.png" alt="" class="homeStore">' + '<div class="num">' + data[i]['collect_count'] + '</div>' + '</div>' +
+                    '<div id="share1" style="float: right;display: flex;">' + '<img id="comment" src="./images/Comment.png" alt="" class="homeComment">' + '<div class="num">' + data[i]['comment_count'] + '</div></div></div></div>' + re.innerHTML;
                 }
                 window.head = data[0]['post_id'].toString();
             }
@@ -193,7 +182,11 @@ function getchat() {
                 temp += '<div class="chatpart2"><div class="chattime">' + tday.getMonth() + '-' + tday.getDate() + '</div>';
             }
             if (data[i]['have_message']) {
-                temp += '<div class="chatnum">' + data[i]['message_count'] + '</div>';
+                if (data[i]['message_count']<100) {
+                    temp += '<div class="info_node">' + data[i]['message_count'] + '</div>';
+                } else {
+                    temp += '<div class="info_node2">99+</div>';
+                }
             }
             temp = '<div class="singlechat" onclick="chat(\'' + data[i]['user_name'] + '\')">' + temp + '</div></div>';
             ch.innerHTML += temp;

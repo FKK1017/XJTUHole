@@ -11,7 +11,7 @@ if (u.indexOf("?") != -1) {
     window.who = theRequest['who'];
 }
 get_chat(1);
-//var int = self.setInterval("listen()", 10000);
+var int = self.setInterval("listen()", 10000);
 
 function listen() {
     var n = window.name;

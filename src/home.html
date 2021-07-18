@@ -54,7 +54,9 @@
 
             });
             var timer;
-
+			window.addEventListener('refresh', function(e){//执行刷新
+                  getchat();
+            });
             function downCallback() {
                 console.log("下拉开始了");
                 // list();
