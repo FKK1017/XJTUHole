@@ -10,8 +10,29 @@ if (u.indexOf("?") != -1) {
     window.name = theRequest['nickname'];
     window.who = theRequest['who'];
 }
+
+ucheck();
 get_chat(1);
+var tempcnt = 10;
 var int = self.setInterval("listen()", 10000);
+
+function ucheck() {
+    var n = window.name;
+    var w = window.who;
+    $.ajax(url + '/unamechat', {
+        async: true,
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({
+            n,
+            w,
+        }),
+    }).done(function(data) {
+        if (data === true) {
+            $('.talk-to').html(w);
+        }
+    })
+}
 
 function listen() {
     var n = window.name;
@@ -22,74 +43,99 @@ function listen() {
         data: JSON.stringify({
             n,
         }),
-    }).done(function (data) {
+    }).done(function(data) {
         if (data['have_message']) {
             get_chat(2);
         }
     })
 }
 
-function get_chat(wa)
-{
-    var n=window.name;
-    var w=window.who;
+
+
+function get_chat(wa) {
+    var n = window.name;
+    var w = window.who;
     if (wa == 0) {
         c = window.num;
     } else {
         c = '0';
     }
-    $.ajax(url + '/lookchat',{
-        async:true,
-        type:"POST",
-        contentType:"application/json",
-        data:JSON.stringify({
-        n,
-        w,
-        wa,
-        c,
+    $.ajax(url + '/lookchat', {
+        async: true,
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({
+            n,
+            w,
+            wa,
+            c,
         }),
-    }).done(function(data){
+    }).done(function(data) {
         if (data == false) {
             if (wa == 1) {
                 var ma = document.getElementById("mescroll");
                 ma.innerHTML = '<div class="msgem"><p>还没跟对方发过消息呐，快来聊一聊吧</p><img src="./images/chat.png"></div>' + ma.innerHTML;
-            }
-            else if (wa == 0) {
+
+            } else if (wa == 0) {
                 alert('没有更多消息了');
             } else {
                 alert('获取失败');
             }
         } else {
             var ma = document.getElementById("msglist");
+            var ustatus = 0;
             if (wa == 1 || wa == 2) {
-                for (var i = data.length-1; i >= 0; i--) {
-                    if (data[i]['sender']) {
-                        ma.innerHTML = ma.innerHTML + '<li class="rightmsg"><div class="rightwithtime"><div class="rightmsgtime">'
-                        + data[i]['time'] + '</div><div class="chat_right">'
-                        + data[i]['content'] + '</div></div><img src="./images/user.png" alt="用户头像" class="rightimg"></li><li><br><br></li>';
-                    } else {
-                        ma.innerHTML = ma.innerHTML + '<li class="leftmsg"><img src="./images/momo.png" alt="对方头像" class="leftimg"><div class="leftwithtime"><div class="leftmsgtime">'
-                        + data[i]['time'] + '</div><div class="chat_left">'
-                        + data[i]['content'] + '</div></div></li><li><br><br></li>';
+                for (var i = data.length - 1; i >= 0; i--) {
+                    if (data[i]['content'].startsWith('*#$%^')) {
+                        //请求实名
+                        ustatus = 1;
+                        continue;
+                    } else if (data[i]['content'].startsWith('@&^-/')) {
+                        //确认实名
+                        ustatus = 2;
+                        continue;
+                    } else if (data[i]['content'].startsWith('{|:?>')) {
+                        //拒绝实名
+                        ustatus = 3;
+                        continue;
                     }
+                    if (data[i]['sender']) {
+                        ma.innerHTML = ma.innerHTML + '<li class="rightmsg"><div class="rightwithtime"><div class="rightmsgtime">' +
+                            data[i]['time'] + '</div><div class="chat_right">' +
+                            data[i]['content'] + '</div></div><img src="./images/user.png" alt="用户头像" class="rightimg"></li><li><br><br></li>';
+                    } else {
+                        ma.innerHTML = ma.innerHTML + '<li class="leftmsg"><img src="./images/momo.png" alt="对方头像" class="leftimg"><div class="leftwithtime"><div class="leftmsgtime">' +
+                            data[i]['time'] + '</div><div class="chat_left">' +
+                            data[i]['content'] + '</div></div></li><li><br><br></li>';
+                    }
+                    tempcnt--;
                 }
-                window.num = data[data.length-1]['message_id'].toString();
+                window.num = data[data.length - 1]['message_id'].toString();
+            } else if (wa == 0) {
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i]['sender']) {
+                        ma.innerHTML = '<li class="rightmsg"><div class="rightwithtime"><div class="rightmsgtime">' +
+                            data[i]['time'] + '</div><div class="chat_right">' +
+                            data[i]['content'] + '</div></div><img src="./images/user.png" alt="用户头像" class="rightimg"></li><li><br><br></li>' +
+                            ma.innerHTML;
+                    } else {
+                        ma.innerHTML = '<li class="leftmsg"><img src="./images/momo.png" alt="对方头像" class="leftimg"><div class="leftwithtime"><div class="leftmsgtime">' +
+                            data[i]['time'] + '</div><div class="chat_left">' +
+                            data[i]['content'] + '</div></div></li><li><br><br></li>' +
+                            ma.innerHTML;
+                    }
+                    tempcnt--;
+                }
+                window.num = data[data.length - 1]['message_id'].toString();
             }
-            else if (wa == 0) {
-                for (var i = 0; i <data.length; i++) {
-                    if (data[i]['sender']) {
-                        ma.innerHTML = '<li class="rightmsg"><div class="rightwithtime"><div class="rightmsgtime">'
-                        + data[i]['time'] + '</div><div class="chat_right">'
-                        + data[i]['content'] + '</div></div><img src="./images/user.png" alt="用户头像" class="rightimg"></li><li><br><br></li>'
-                        + ma.innerHTML;
-                    } else {
-                        ma.innerHTML = '<li class="leftmsg"><img src="./images/momo.png" alt="对方头像" class="leftimg"><div class="leftwithtime"><div class="leftmsgtime">'
-                        + data[i]['time'] + '</div><div class="chat_left">'
-                        + data[i]['content'] + '</div></div></li><li><br><br></li>'
-                        + ma.innerHTML;
-                    }
-                }
-                window.num = data[data.length-1]['message_id'].toString();
+            $('[name=tempcnt]').html(tempcnt);
+            if (ustatus == 1) {
+                $('.ConfirmRealName').addClass('Display');
+            } else if (ustatus == 2) {
+                $('.talk-to').html(w);
+            } else if (ustatus == 3) {
+                alert('对方拒绝了你的实名请求');
+                $('.RealName').addClass('Display');
             }
         }
     })
@@ -99,11 +145,11 @@ function getNewDate() {
     var date = new Date();
     var transverse = "-";
     var Verticalpoint = ":";
-    var month = date.getMonth() + 1;//获取月份
-    var strDate = date.getDate();//获取具体的日期           
-    var strHour = date.getHours();//获取...钟点
-    var strMinute = date.getMinutes();//获取分钟数
-    var strSeconde = date.getSeconds();//获取秒钟数
+    var month = date.getMonth() + 1; //获取月份
+    var strDate = date.getDate(); //获取具体的日期           
+    var strHour = date.getHours(); //获取...钟点
+    var strMinute = date.getMinutes(); //获取分钟数
+    var strSeconde = date.getSeconds(); //获取秒钟数
     //判断获取月份 、 具体的日期 、...钟点、分钟数、秒钟数 是否在1~9
     //如果是则在前面加“0”
     if (month >= 1 && month <= 9) {
@@ -124,39 +170,135 @@ function getNewDate() {
     }
     //时间日期字符串拼接
     var NewDate = date.getFullYear() + transverse + month + transverse + strDate + " " +
-       strHour + Verticalpoint + strMinute + Verticalpoint + strSeconde;
+        strHour + Verticalpoint + strMinute + Verticalpoint + strSeconde;
     //返回拼接字符串
     return NewDate;
 }
 
-function send_chat()
-{
-    var n=window.name;
-    var w=window.who;
-    var c=$('textarea[id="message"]').val();
-    if (c == "")
-    {
+function send_chat() {
+    var n = window.name;
+    var w = window.who;
+    var c = $('textarea[id="message"]').val();
+    if (c == "") {
         alert("消息不可为空");
     } else {
-        $.ajax(url + '/chat',{
-            async:true,
-            type:"POST",
-            contentType:"application/json",
-            data:JSON.stringify({
-            n,
-            w,
-            c,
+        $.ajax(url + '/chat', {
+            async: true,
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+                n,
+                w,
+                c,
             }),
-        }).done(function(data){
+        }).done(function(data) {
             if (data) {
                 var ma = document.getElementById("msglist");
-                ma.innerHTML = ma.innerHTML + '<li class="rightmsg"><div class="rightwithtime"><div class="rightmsgtime">'
-                + getNewDate() + '</div><div class="chat_right">'
-                + c + '</div></div><img src="./images/user.png" alt="用户头像" class="rightimg"></li><li><br><br></li>';
-                $('textarea[id="message"]').val("")
+                ma.innerHTML = ma.innerHTML + '<li class="rightmsg"><div class="rightwithtime"><div class="rightmsgtime">' +
+                    getNewDate() + '</div><div class="chat_right">' +
+                    c + '</div></div><img src="./images/user.png" alt="用户头像" class="rightimg"></li><li><br><br></li>';
+
             } else {
                 alert('发送失败！');
             }
         })
     }
+}
+
+function send_check() {
+    if (tempcnt > 0) {
+        send_chat();
+        tempcnt--;
+    }
+    $('[name=tempcnt]').html(tempcnt);
+    $('.RealName').addClass('Display');
+    $('textarea[id="message"]').val("");
+}
+
+function requestReal() {
+    var n = window.name;
+    var w = window.who;
+    var c = '*#$%^' + w;
+    $.ajax(url + '/chat', {
+        async: true,
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({
+            n,
+            w,
+            c,
+        }),
+    }).done(function(data) {
+        if (data === true) {
+            $('.RealName').removeClass('Display');
+        } else {
+            alert('发送失败！');
+        }
+    })
+
+}
+
+function confirmReal() {
+    var n = window.name;
+    var w = window.who;
+    var c = '@&^-/' + w;
+    $.ajax(url + '/chat', {
+        async: true,
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({
+            n,
+            w,
+            c,
+        }),
+    }).done(function(data) {
+        if (data === true) {
+            mktrue();
+            $('.ConfirmRealName').removeClass('Display');
+        } else {
+            alert('发送失败！');
+        }
+    })
+}
+
+function refuseReal() {
+    var n = window.name;
+    var w = window.who;
+    var c = '{|:?>' + w;
+    $.ajax(url + '/chat', {
+        async: true,
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({
+            n,
+            w,
+            c,
+        }),
+    }).done(function(data) {
+        if (data === true) {
+            $('.ConfirmRealName').removeClass('Display');
+        } else {
+            alert('发送失败！');
+        }
+    })
+}
+
+function mktrue() {
+    var n = window.name;
+    var w = window.who;
+    $.ajax(url + '/unamechange', {
+        async: true,
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify({
+            n,
+            w,
+        }),
+    }).done(function(data) {
+        if (data === true) {
+            $('.talk-to').html(w);
+        } else {
+            alert('发送失败！');
+        }
+    })
 }
