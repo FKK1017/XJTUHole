@@ -1,6 +1,8 @@
 var labels = ['hot', '学习', '情感', '游戏', '运动', '吐槽', '求助', '整活', '其他'];
 var url = 'http://111.229.120.197:8080';
-window.label = labels[0];
+var u = decodeURI(location.search);
+window.name =
+    window.label = labels[0];
 window.lastindex = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 window.onload = function() {
     var w = $("#header").width();
@@ -34,18 +36,33 @@ $(function() {
     });
 });
 
+if (u.indexOf("?") != -1) {
+    var str = u.substr(1);
+    var strs = str.split("=");
+    window.name = strs[1];
+}
 gettopics(1, 0);
 
 function quit() {
-    window.history.go(-1);
+    mui.back();
 }
 
 function search() {
-    window.location.href = './search_result.html?nickname=' + window.name + '&key_word=' + $("#search").val();
+    mui.openWindow({
+        url: './search_result.html?nickname=' + window.name + '&key_word=' + $("#search").val(),
+        show: {
+            autoShow: true
+        }
+    })
 }
 
 function read_topic(n) {
-    window.location.href = './post.html?nickname=' + window.name + '&postnumber=' + n;
+    mui.openWindow({
+        url: 'post.html?nickname=' + window.name + '&postnumber=' + n,
+        show: {
+            autoShow: true
+        }
+    })
 }
 
 function gettopics(w, p) {
@@ -78,12 +95,49 @@ function gettopics(w, p) {
             if (l === 'hot') {
                 var thtml = '';
                 for (var i = 0; i < data['ret'].length; i++) {
-                    thtml = '<div class="hot" id="' + data['ret'][i]['post_id'] + '" onclick="read_topic(' + data['ret'][i]['post_id'] + ')">' +
-                        '<div id="hot_num">' + (i + Number(window.lastindex[p]) + 1) + '</div>' +
-                        '<div class="hot_title">' + data['ret'][i]['title'] + '</div>' +
-                        '<img id="fire" src="./images/hot.png">' +
-                        '<p id="hot_degree">' + data['ret'][i]['browse_count'] + '万热度</p>' +
-                        '</div>';
+                    if (Number(window.lastindex[p]) === 0) {
+                        switch (i) {
+                            case 0:
+                                thtml = '<div class="hot" id="' + data['ret'][i]['post_id'] + '" onclick="read_topic(' + data['ret'][i]['post_id'] + ')">' +
+                                    '<div id="hot_num">' + (i + Number(window.lastindex[p]) + 1) + '</div>' +
+                                    '<div class="hot_title">' + data['ret'][i]['title'] + '</div>' +
+                                    '<img id="fire" src="./images/mountain.png">' +
+                                    '<p id="hot_degree">' + data['ret'][i]['browse_count'] + '万热度</p>' +
+                                    '</div>';
+                                break;
+                            case 1:
+                                thtml = '<div class="hot" id="' + data['ret'][i]['post_id'] + '" onclick="read_topic(' + data['ret'][i]['post_id'] + ')">' +
+                                    '<div id="hot_num">' + (i + Number(window.lastindex[p]) + 1) + '</div>' +
+                                    '<div class="hot_title">' + data['ret'][i]['title'] + '</div>' +
+                                    '<img id="fire" src="./images/rocket.png">' +
+                                    '<p id="hot_degree">' + data['ret'][i]['browse_count'] + '万热度</p>' +
+                                    '</div>';
+                                break;
+                            case 2:
+                                thtml = '<div class="hot" id="' + data['ret'][i]['post_id'] + '" onclick="read_topic(' + data['ret'][i]['post_id'] + ')">' +
+                                    '<div id="hot_num">' + (i + Number(window.lastindex[p]) + 1) + '</div>' +
+                                    '<div class="hot_title">' + data['ret'][i]['title'] + '</div>' +
+                                    '<img id="fire" src="./images/guo.png">' +
+                                    '<p id="hot_degree">' + data['ret'][i]['browse_count'] + '万热度</p>' +
+                                    '</div>';
+                                break;
+                            default:
+                                thtml = '<div class="hot" id="' + data['ret'][i]['post_id'] + '" onclick="read_topic(' + data['ret'][i]['post_id'] + ')">' +
+                                    '<div id="hot_num">' + (i + Number(window.lastindex[p]) + 1) + '</div>' +
+                                    '<div class="hot_title">' + data['ret'][i]['title'] + '</div>' +
+                                    '<img id="fire" src="./images/hot.png">' +
+                                    '<p id="hot_degree">' + data['ret'][i]['browse_count'] + '万热度</p>' +
+                                    '</div>';
+                                break;
+                        }
+                    } else {
+                        thtml = '<div class="hot" id="' + data['ret'][i]['post_id'] + '" onclick="read_topic(' + data['ret'][i]['post_id'] + ')">' +
+                            '<div id="hot_num">' + (i + Number(window.lastindex[p]) + 1) + '</div>' +
+                            '<div class="hot_title">' + data['ret'][i]['title'] + '</div>' +
+                            '<img id="fire" src="./images/hot.png">' +
+                            '<p id="hot_degree">' + data['ret'][i]['browse_count'] + '万热度</p>' +
+                            '</div>';
+                    }
                     temp.innerHTML += thtml;
                 }
                 window.lastindex[p] = data['next_post_index'];
