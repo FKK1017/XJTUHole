@@ -145,10 +145,14 @@ function main() {
 
 function comment() {
     var c = $('textarea[id="comment1"]').val();
+    console.log(c)
     if (c != '') {
         var na = window.name;
         var nb = window.number;
-        var uname = document.getElementById("pot").checked;
+        var uname = document.getElementById("ispot").checked;
+        console.log(na)
+        console.log(nb)
+        console.log(uname)
         $.ajax(url + '/upcomment', {
             async: true,
             type: "POST",
