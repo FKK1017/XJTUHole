@@ -153,43 +153,13 @@ samp {
 	font-size: 1em
 }
 
-button,
-input,
-optgroup,
-select,
-textarea {
-	font: inherit;
-	margin: 0;
-	color: inherit
-}
 
-button {
-	overflow: visible
-}
 
-button,
-select {
-	text-transform: none
-}
-
-button,
-html input[type=button],
-input[type=reset],
-input[type=submit] {
-	cursor: pointer;
-	-webkit-appearance: button
-}
-
-button[disabled],
-html input[disabled] {
-	cursor: default
-}
 
 input {
 	line-height: normal
 }
 
-input[type=checkbox],
 input[type=radio] {
 	box-sizing: border-box;
 	padding: 0
@@ -998,8 +968,6 @@ p {
 }
 
 .mui-btn,
-button,
-input[type=button],
 input[type=reset],
 input[type=submit] {
 	font-size: 14px;
@@ -2725,53 +2693,6 @@ select:focus {
 	padding-right: 58px
 }
 
-.mui-checkbox.mui-left input[type=checkbox],
-.mui-radio.mui-left input[type=radio] {
-	left: 20px
-}
-
-.mui-checkbox.mui-left label,
-.mui-radio.mui-left label {
-	padding-right: 15px;
-	padding-left: 58px
-}
-
-.mui-checkbox input[type=checkbox],
-.mui-radio input[type=radio] {
-	position: absolute;
-	top: 4px;
-	right: 20px;
-	display: inline-block;
-	width: 28px;
-	height: 26px;
-	border: 0;
-	outline: 0 !important;
-	background-color: transparent;
-	-webkit-appearance: none
-}
-
-.mui-checkbox input[type=checkbox][disabled]:before,
-.mui-radio input[type=radio][disabled]:before {
-	opacity: .3
-}
-
-.mui-checkbox input[type=checkbox]:before,
-.mui-radio input[type=radio]:before {
-	font-family: Muiicons;
-	font-size: 28px;
-	font-weight: 400;
-	line-height: 1;
-	text-decoration: none;
-	color: #aaa;
-	border-radius: 0;
-	background: 0 0;
-	-webkit-font-smoothing: antialiased
-}
-
-.mui-checkbox input[type=checkbox]:checked:before,
-.mui-radio input[type=radio]:checked:before {
-	color: #007aff
-}
 
 .mui-checkbox label.mui-disabled,
 .mui-checkbox.mui-disabled label,
@@ -3304,11 +3225,12 @@ select:focus {
 .mui-popup {
 	position: fixed;
 	z-index: 10000;
-	top: 50%;
+	top:50%;
 	left: 50%;
 	display: none;
 	overflow: hidden;
-	width: 270px;
+	height: 270px;
+	width: 450px;
 	-webkit-transition-property: -webkit-transform, opacity;
 	transition-property: transform, opacity;
 	-webkit-transform: translate3d(-50%, -50%, 0) scale(1.185);
@@ -3340,7 +3262,7 @@ select:focus {
 	position: relative;
 	padding: 15px;
 	border-radius: 13px 13px 0 0;
-	background: rgba(255, 255, 255, .95)
+	background: rgba(255, 255, 255, .95);
 }
 
 .mui-popup-inner:after {
@@ -3362,15 +3284,17 @@ select:focus {
 }
 
 .mui-popup-title {
-	font-size: 18px;
+	font-size: 3em;
 	font-weight: 500;
-	text-align: center
+	text-align: center;
+	line-height: 1em;
 }
 
 .mui-popup-title+.mui-popup-text {
 	font-family: inherit;
-	font-size: 14px;
-	margin: 5px 0 0
+	font-size: 3em;
+	margin: 5px 0 0;
+	line-height: 1em;
 }
 
 .mui-popup-buttons {
@@ -3385,14 +3309,14 @@ select:focus {
 }
 
 .mui-popup-button {
-	font-size: 17px;
-	line-height: 44px;
+	font-size: 3em;
+	line-height: 1em;
 	position: relative;
 	display: block;
 	overflow: hidden;
 	box-sizing: border-box;
 	width: 100%;
-	height: 44px;
+	height: 440px;
 	padding: 0 5px;
 	cursor: pointer;
 	text-align: center;

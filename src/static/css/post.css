@@ -38,6 +38,7 @@ body {
     position: absolute;
     top: 10%;
     left: 50%;
+    line-height: 1em;
     transform: translate(-50%, 0);
 }
 
@@ -159,6 +160,7 @@ body {
     margin: 10px 0;
     font-size: 2.5em;
     color: #808080;
+    line-height: 1.5em;
 }
 
 .ZanBar {
@@ -226,6 +228,9 @@ body {
     border: 1px solid rgba(182, 182, 182, 0.79);
     background-color: #eeeeee;
     z-index: 998;
+    line-height: 1em;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .PingLun1 {
@@ -238,11 +243,11 @@ body {
     display: none;
     position: fixed;
     bottom: 0;
-    z-index: 999;
+    z-index: 100;
 }
 
 .MyWord1 {
-    width: auto;
+    width: 65%;
     height: auto;
     margin: 5px 20px;
     position: absolute;
@@ -252,7 +257,7 @@ body {
     padding-top: 5px;
     color: black;
     vertical-align: center;
-    font-size: 3em;
+    font-size: 2.5em;
     border: 1px solid rgba(125, 124, 124, 0.79);
     border-radius: 20px;
     background-color: #e2e2e2;
@@ -292,7 +297,7 @@ body {
 
 .MyWord {
     width: 55%;
-    height: 70%;
+    height: 100%;
     position: relative;
     top: 50%;
     transform: translateY(-50%);
@@ -300,7 +305,7 @@ body {
     padding-top: 5px;
     color: black;
     vertical-align: center;
-    font-size: 3.5em;
+    font-size: 2.5em;
     border: 1px solid rgba(125, 124, 124, 0.79);
     border-radius: 20px;
     background-image: url("../../images/actar.png");
@@ -324,10 +329,11 @@ body {
 .store,
 .share {
     width: 10%;
-    height: 70%;
+    height: 80%;
     font-size: 20px;
     background-repeat: no-repeat;
     background-size: 60%;
+    background-color: transparent;
     background-position: 50% 0;
     background-color: #eeeeee;
 }
@@ -364,6 +370,7 @@ body {
 .blank p {
     font-size: 2.5em;
     color: #888888;
+    line-height: 1.5em;
 }
 
 .blank img {
@@ -419,10 +426,19 @@ body {
     font-size: 2.5em;
     color: #808080;
     padding-bottom: 12px;
+    line-height: 1.5em;
 }
 
-.nav-box li {
+.nav-box li a{
     border-bottom: 2px solid rgba(182, 182, 182, 0.79);
+    font-size: 2em;line-height: 2em;
+    background-color: transparent;
+    color: black;
+    text-align: center;
+}
+.nav-box li input{
+    border-bottom: 2px solid rgba(182, 182, 182, 0.79);
+    font-size: 2em;line-height: 2em;
 }
 
 .time1 {
@@ -437,3 +453,4 @@ body {
     top: -5px;
     left: -32%;
 }
+

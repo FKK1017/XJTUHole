@@ -12,6 +12,13 @@ if (u.indexOf("?") != -1) {
 }
 var comment_nub;
 main();
+window.onload=function() {
+    console.log("running")
+    mui('#picture').on('tap', 'li>a', function() {
+        mui.alert("你刚点击了\"" + this.innerHTML + "\"按钮");
+    //  mui("#picture").popover('toggle');//这是可以用来关闭底部弹窗的事件
+    })
+}
 
 function del() {
     if (window.name != window.author) {
@@ -106,8 +113,8 @@ function main() {
                 if (data['comment'][i]['like'] == true) {
                     co.innerHTML = co.innerHTML + ' <li id="' + data['comment'][i]['comment_id'] + '"><div class="comment1"><div class="HeadBar1">' +
                         '<img src="./images/1.jpeg" alt="" onclick=chat("' + data['comment'][i]['author_name'] + '")>' +
-                        '<p class="name1" >' + pe + '</p>' + '<div class="more"><input type="button" class="three"><ul class="nav-box"><li><input type="button" value="删除" onclick="del_comment(\'' + data['comment'][i]['author_name'] + '\', \'' + data['comment'][i]['comment_id'] + '\')"></li>' +
-                        '<li><input type="button" value="举报"></li></ul></div><p class="time1">' + data['comment'][i]['comment_time'] + '</p></div>' +
+                        '<p class="name1" >匿名用户</p>' + '<div class="more"><input type="button" class="three"><ul class="nav-box"><li><input type="button" value="删除" onclick="del_comment(\'' + data['comment'][i]['author_name'] + '\', \'' + data['comment'][i]['comment_id'] + '\')"></li>' +
+                        '<li><a href="#picture" class="mui-btn mui-btn-primary">举报</a></li><li><input type="button" value="不感兴趣"></li></ul></div><p class="time1">' + data['comment'][i]['comment_time'] + '</p></div>' +
                         '<div class="BodyBar1"><p class="content1">' + data['comment'][i]['content'] + '</p>' +
                         '<div class="ZanBar"><button class="LikeT" id="Like' + data['comment'][i]['comment_id'] + '"onclick="LikeCmt(' + data['comment'][i]['comment_id'] + ')"></button>' +
                         '<button class="DislikeF" id="Dislike' + data['comment'][i]['comment_id'] + '"onclick="DislikeCmt(' + data['comment'][i]['comment_id'] + ')"></button>' +
@@ -115,8 +122,8 @@ function main() {
                 } else if (data['comment'][i]['dislike'] == true) {
                     co.innerHTML = co.innerHTML + ' <li id="' + data['comment'][i]['comment_id'] + '"><div class="comment1"><div class="HeadBar1">' +
                         '<img src="./images/1.jpeg" alt="" onclick=chat("' + data['comment'][i]['author_name'] + '")>' +
-                        '<p class="name1" >' + pe + '</p>' + '<div class="more"><input type="button" class="three"><ul class="nav-box"><li><input type="button" value="删除" onclick="del_comment(\'' + data['comment'][i]['author_name'] + '\', \'' + data['comment'][i]['comment_id'] + '\')"></li>' +
-                        '<li><input type="button" value="举报"></li></ul></div><p class="time1">' + data['comment'][i]['comment_time'] + '</p></div>' +
+                        '<p class="name1" >匿名用户</p>' + '<div class="more"><input type="button" class="three"><ul class="nav-box"><li><input type="button" value="删除" onclick="del_comment(\'' + data['comment'][i]['author_name'] + '\', \'' + data['comment'][i]['comment_id'] + '\')"></li>' +
+                        '<li><a href="#picture" class="mui-btn mui-btn-primary">举报</a></li><li><input type="button" value="不感兴趣"></li></ul></div><p class="time1">' + data['comment'][i]['comment_time'] + '</p></div>' +
                         '<div class="BodyBar1"><p class="content1">' + data['comment'][i]['content'] + '</p>' +
                         '<div class="ZanBar"><button class="LikeF" id="Like' + data['comment'][i]['comment_id'] + '"onclick="LikeCmt(' + data['comment'][i]['comment_id'] + ')"></button>' +
                         '<button class="DislikeT" id="Dislike' + data['comment'][i]['comment_id'] + '"onclick="DislikeCmt(' + data['comment'][i]['comment_id'] + ')"></button>' +
@@ -124,8 +131,8 @@ function main() {
                 } else {
                     co.innerHTML = co.innerHTML + ' <li id="' + data['comment'][i]['comment_id'] + '"><div class="comment1"><div class="HeadBar1">' +
                         '<img src="./images/1.jpeg" alt="" onclick=chat("' + data['comment'][i]['author_name'] + '")>' +
-                        '<p class="name1" >' + pe + '</p>' + '<div class="more"><input type="button" class="three"><ul class="nav-box"><li><input type="button" value="删除" onclick="del_comment(\'' + data['comment'][i]['author_name'] + '\', \'' + data['comment'][i]['comment_id'] + '\')"></li>' +
-                        '<li><input type="button" value="举报"></li></ul></div><p class="time1">' + data['comment'][i]['comment_time'] + '</p></div>' +
+                        '<p class="name1" >匿名用户</p>' + '<div class="more"><input type="button" class="three"><ul class="nav-box"><li><input type="button" value="删除" onclick="del_comment(\'' + data['comment'][i]['author_name'] + '\', \'' + data['comment'][i]['comment_id'] + '\')"></li>' +
+                        '<li><a href="#picture" class="mui-btn mui-btn-primary">举报</a></li><li><input type="button" value="不感兴趣"></li></ul></div><p class="time1">' + data['comment'][i]['comment_time'] + '</p></div>' +
                         '<div class="BodyBar1"><p class="content1">' + data['comment'][i]['content'] + '</p>' +
                         '<div class="ZanBar"><button class="LikeF" id="Like' + data['comment'][i]['comment_id'] + '" onclick="LikeCmt(' + data['comment'][i]['comment_id'] + ')"></button>' +
                         '<button class="DislikeF" id="Dislike' + data['comment'][i]['comment_id'] + '"onclick="DislikeCmt(' + data['comment'][i]['comment_id'] + ')"></button>' +
@@ -138,10 +145,14 @@ function main() {
 
 function comment() {
     var c = $('textarea[id="comment1"]').val();
+    console.log(c)
     if (c != '') {
         var na = window.name;
         var nb = window.number;
-        var uname = document.getElementById("pot").checked;
+        var uname = document.getElementById("ispot").checked;
+        console.log(na)
+        console.log(nb)
+        console.log(uname)
         $.ajax(url + '/upcomment', {
             async: true,
             type: "POST",

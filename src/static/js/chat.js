@@ -14,7 +14,7 @@ if (u.indexOf("?") != -1) {
 ucheck();
 get_chat(1);
 var tempcnt = 10;
-//var int = self.setInterval("listen()", 10000);
+var int = self.setInterval("listen()", 10000);
 
 function ucheck() {
     var n = window.name;
@@ -75,6 +75,7 @@ function get_chat(wa) {
             if (wa == 1) {
                 var ma = document.getElementById("mescroll");
                 ma.innerHTML = '<div class="msgem"><p>还没跟对方发过消息呐，快来聊一聊吧</p><img src="./images/chat.png"></div>' + ma.innerHTML;
+
             } else if (wa == 0) {
                 alert('没有更多消息了');
             } else {
