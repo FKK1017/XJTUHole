@@ -16,15 +16,15 @@
 <body>
     <script>
         mui.init({
-		beforeback: function() {　　　　
-	   
-			var list = plus.webview.currentWebview().opener();　　　　
-			//refresh是A页面自定义事件
-			mui.fire(list, 'refresh');
-			//返回true,继续页面关闭逻辑
-			return true;
-		}
-	});
+            beforeback: function() {　　　　
+
+                var list = plus.webview.currentWebview().opener();　　　　
+                //refresh是A页面自定义事件
+                mui.fire(list, 'refresh');
+                //返回true,继续页面关闭逻辑
+                return true;
+            }
+        });
 
         function quit() {
             mui.back();

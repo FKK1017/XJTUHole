@@ -16,25 +16,25 @@
 </head>
 
 <body>
-	<script>
-	mui.init()
-	function quit() {
-		mui.back();
-	}
-	
-	function chat(n) {
-	    if (n == window.name) {
-	        alert("这是你自己的发表的哦~");
-	    } else {
-			mui.openWindow({
-				url:'./chat.html?nickname=' + window.name + '&who=' + n,
-				show:{
-					autoShow:true
-				}
-			})
-	    }
-	}
-	
+    <script>
+        mui.init()
+
+        function quit() {
+            mui.back();
+        }
+
+        function chat(n) {
+            if (n == window.name) {
+                alert("这是你自己的发表的哦~");
+            } else {
+                mui.openWindow({
+                    url: './chat.html?nickname=' + window.name + '&who=' + n,
+                    show: {
+                        autoShow: true
+                    }
+                })
+            }
+        }
     </script>
     <div class="main">
         <div class="nav-bar">
@@ -52,6 +52,9 @@
                         <li><a href="#picture" class="mui-btn mui-btn-primary">举报</a></li>
                         <li><input type="button" value="不感兴趣"></li>
                     </ul>
+                </div>
+                <div class="NoLike" id="NoLike">
+                    <p>知道啦，以后会减少该类型帖子的推荐滴！</p>
                 </div>
 
                 <div id="picture" class="mui-popover mui-popover-action " style="right: 0;">
@@ -107,7 +110,7 @@
         </div>
         <div class="PingLun1">
             <textarea id='comment1' name="MyWord1" class="MyWord1" rows="3" cols="36" placeholder="写评论..."></textarea>
-            <input type="button" value="发送" onclick="comment()"  style="font-size: 2.5em;" class="submit">
+            <input type="button" value="发送" onclick="comment()" style="font-size: 2.5em;" class="submit">
             <label class="anonymity">
                 <input type="checkbox" class="pot" style="font-size: 2.5em;" id="ispot">
                 <label>匿名</label>
