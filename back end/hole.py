@@ -1363,8 +1363,96 @@ def set_chat_anonymous(name:str,who:str):
             db.close()
             return False
 
+def select_report():
+    db = mysql.connector.connect(host="localhost", user=mysql_user, passwd=mysql_password, database=database_name)
+    cursor = db.cursor()
+    sql1 = "select user_id,post_id,report_time,report_reason from post_report where is_handle = 0"
+    sql2 = "select user_id,comment_id,report_time,report_reason from comment_report where is_handle = 0"
+    ret = []
+    try:
+        cursor.execute(sql1)
+    except:
+        db.close()
+        return False
+    results = cursor.fetchall()
+    for result in results:
+        post_id = str(result[1])
+        sql = "select title,content from post where post_id = %s" % (post_id)
+        try:
+            cursor.execute(sql)
+        except:
+            db.close()
+            return False
+        re = cursor.fetchall()
+        title = re[0][0]
+        content = re[0][1]
+        if len(title)>15:
+            title = title[0:15]
+        if len(content)>100:
+            content = content[0:100]
+        user_id = str(result[0])
+        sql = "select user_name from user_information where user_id = %s" % (user_id)
+        try:
+            cursor.execute(sql)
+        except:
+            db.close()
+            return False
+        reporter_name = str(cursor.fetchall()[0][0])
+        ret.append({"type":"post","reporter_name":reporter_name,"reporter_id":str(result[0]),"post_id":str(result[1]),"report_time":(result[2]).strftime('%Y-%m-%d %H:%M'),"report_reason":result[3],"title":title,"content":content})
+    try:
+        cursor.execute(sql2)
+    except:
+        db.close()
+        return False
+    results = cursor.fetchall()
+    for result in results:
+        comment_id = str(result[1])
+        sql = "select content,comment_time from comment where comment_id = %s" % (comment_id)
+        try:
+            cursor.execute(sql)
+        except:
+            db.close()
+            return False
+        re = cursor.fetchall()
+        content = re[0][0]
+        comment_time = re[0][1].strftime('%Y-%m-%d %H:%M')
+        if len(content)>100:
+            content = content[0:100]
+        user_id = str(result[0])
+        sql = "select user_name from user_information where user_id = %s" % (user_id)
+        try:
+            cursor.execute(sql)
+        except:
+            db.close()
+            return False
+        reporter_name = str(cursor.fetchall()[0][0])
+        ret.append({"type": "comment", "reporter_name":reporter_name,"reporter_id": str(result[0]), "comment_id": str(result[1]),
+                    "report_time": (result[2]).strftime('%Y-%m-%d %H:%M'), "report_reason": result[3],"content":content,"comment_time":comment_time})
+    db.close()
+    return ret
 
-
+def handle_report(way:int,type:str,id:str,reporter_id:str):
+    if way==0:
+        if type=="post":
+            if not delete_post(id):
+                return False
+        else:
+            if not delete_comment(id):
+                return False
+    db = mysql.connector.connect(host="localhost", user=mysql_user, passwd=mysql_password, database=database_name)
+    cursor = db.cursor()
+    if type=="post":
+        sql = "update post_report set is_handle = 1 where post_id=%s and user_id=%s" % (id,reporter_id)
+    else:
+        sql = "update comment_report set is_handle = 1 where comment_id=%s and user_id=%s" % (id, reporter_id)
+    try:
+        cursor.execute(sql)
+        db.commit()
+        db.close()
+        return True
+    except:
+        db.close()
+        return False
 
 '''def alter_all_password():
     db = mysql.connector.connect(host="localhost", user=mysql_user, passwd=mysql_password, database=database_name)

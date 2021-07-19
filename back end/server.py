@@ -119,7 +119,7 @@ def get_info():
 @app.route('/reinfo',methods=['POST'])
 def re_info():
     rinfo = request.get_json()
-    res = alter_user_information(rinfo['n'], rinfot['nn'], rinfo['s'], rinfo['i']) #测试数据库
+    res = alter_user_information(rinfo['n'], rinfo['nn'], rinfo['s'], rinfo['i']) #测试数据库
     return jsonify(res)
 
 @app.route('/starpost',methods=['POST'])
@@ -202,9 +202,10 @@ def hot_topic():
 def search_love():
     res = {'status':True,'data':None}
     ho = request.get_json()
+    sex = search_sex(ho['name'])
     if ho['li_te'] == '1':
         if ho['way'] == '1':
-            if ho['sex'] == '男':
+            if sex == '男':
                 while True:
                     if tell_woman_people.empty():
                         listen_man_people.put(ho['name'])
@@ -269,7 +270,7 @@ def search_love():
                         break
     else:
         if ho['way'] == '1':
-            if ho['sex'] == '男':
+            if sex == '男':
                 while True:
                     if listen_woman_people.empty():
                         tell_man_people.put(ho['name'])
@@ -363,6 +364,18 @@ def unamec_change():
     un = request.get_json()
     res = set_chat_anonymous(un['n'], un['w'])
     return jsonify(res)
+
+@app.route('/getreports',methods=['POST'])
+def getreports():
+    req = request.get_json()
+    ret = select_report()
+    return jsonify(ret)
+
+@app.route('/handlereport',methods=['POST'])
+def handlereport():
+    req = request.get_json()
+    ret = handle_report(int(req['r']),req['w'],req['nu'],req['r_id'])
+    return jsonify(ret)
 
 if __name__ == "__main__":
     scheduler = BackgroundScheduler(timezone='MST')
