@@ -12,25 +12,25 @@
 </head>
 
 <body>
-	<script>
-	mui.init()
-	function quit() {
-		mui.back();
-	}
-	
-	function chat(n) {
-	    if (n == window.name) {
-	        alert("这是你自己的发表的哦~");
-	    } else {
-			mui.openWindow({
-				url:'./chat.html?nickname=' + window.name + '&who=' + n,
-				show:{
-					autoShow:true
-				}
-			})
-	    }
-	}
-	
+    <script>
+        mui.init()
+
+        function quit() {
+            mui.back();
+        }
+
+        function chat(n) {
+            if (n == window.name) {
+                alert("这是你自己的发表的哦~");
+            } else {
+                mui.openWindow({
+                    url: './chat.html?nickname=' + window.name + '&who=' + n,
+                    show: {
+                        autoShow: true
+                    }
+                })
+            }
+        }
     </script>
     <div class="main">
         <div class="nav-bar">
@@ -48,6 +48,9 @@
                         <li><input type="button" value="举报"></li>
                         <li><input type="button" value="不感兴趣"></li>
                     </ul>
+                </div>
+                <div class="NoLike" id="NoLike">
+                    <p>知道啦，以后会减少该类型帖子的推荐滴！</p>
                 </div>
                 <p class="time" id="time"></p>
             </div>
