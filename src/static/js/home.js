@@ -176,19 +176,27 @@ function getchat() {
             temp = '<div class="chatimg">' + '<img src=./images/github.png alt="头像">' + '</div>';
             if (data[i]['content'].startsWith('*#$%^')) {
                 //申请
+
                 temp += '<div class="chatpart1"><div class="chatname">' + '匿名用户' + '</div>' +
-                    '<div class="chatctt">' + '对方发起了实名请求' + '</div></div>';
+                    '<div class="chatctt">' + '发起了实名请求' + '</div></div>';
             } else if (data[i]['content'].startsWith('@&^-/')) {
                 //接受
-                temp += '<div class="chatpart1"><div class="chatname">' + '匿名用户' + '</div>' +
-                    '<div class="chatctt">' + '对方接受了你的实名请求' + '</div></div>';
+
+                temp += '<div class="chatpart1"><div class="chatname">' + data[i]['user_name'] + '</div>' +
+                    '<div class="chatctt">' + '接受了你的实名请求' + '</div></div>';
             } else if (data[i]['content'].startsWith('{|:?>')) {
                 //拒绝
                 temp += '<div class="chatpart1"><div class="chatname">' + '匿名用户' + '</div>' +
-                    '<div class="chatctt">' + '对方拒绝了你的实名请求' + '</div></div>';
+                    '<div class="chatctt">' + '拒绝了你的实名请求' + '</div></div>';
             } else {
-                temp += '<div class="chatpart1"><div class="chatname">' + '匿名用户' + '</div>' +
-                    '<div class="chatctt">' + data[i]['content'] + '</div></div>';
+                if (data[i]['is_anonymous']) {
+                    temp += '<div class="chatpart1"><div class="chatname">' + data[i]['user_name'] + '</div>' +
+                        '<div class="chatctt">' + data[i]['content'] + '</div></div>';
+                } else {
+                    temp += '<div class="chatpart1"><div class="chatname">' + '匿名用户' + '</div>' +
+                        '<div class="chatctt">' + data[i]['content'] + '</div></div>';
+                }
+
             }
 
             var tday = new Date(data[i]['time']);
