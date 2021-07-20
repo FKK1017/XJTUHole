@@ -119,6 +119,29 @@ body {
     border: none;
 }
 
+.NoLike {
+    width: 600px;
+    height: 300px;
+    background-color: rgba(217, 220, 220, 0.64);
+    position: fixed;
+    top: 50%;
+    left: 20%;
+    border-radius: 50px;
+    text-align: center;
+    margin: 0;
+    display: none;
+}
+
+.NoLike>p {
+    width: 100%;
+    padding-top: 100px;
+    text-align: center;
+    font-size: 3em;
+    margin: 0;
+    color: black;
+    line-height: 60px;
+}
+
 .nav-box {
     margin: 0;
     padding: 0 10px;
@@ -263,7 +286,7 @@ body {
     background-color: #e2e2e2;
 }
 
-.submit{
+.submit {
     width: 200px;
     height: 80px;
     background-color: skyblue;
@@ -275,7 +298,7 @@ body {
     border-radius: 10px;
 }
 
-.anonymity{
+.anonymity {
     width: 200px;
     height: 80px;
     color: black;
@@ -285,12 +308,14 @@ body {
     left: 55%;
     text-align: center;
 }
-.anonymity label{
+
+.anonymity label {
     width: 80px;
     height: 80px;
     font-size: 1.3em;
 }
-.pot{
+
+.pot {
     width: 70px;
     height: 60px;
 }
@@ -429,16 +454,20 @@ body {
     line-height: 1.5em;
 }
 
-.nav-box li a{
-    border-bottom: 2px solid rgba(182, 182, 182, 0.79);
-    font-size: 2em;line-height: 2em;
+.nav-box li a {
+    border: 0px;
+    font-size: 2em;
+    line-height: 2em;
     background-color: transparent;
-    color: black;
+    color: #888888;
     text-align: center;
+    padding: 6px;
 }
-.nav-box li input{
+
+.nav-box li input {
     border-bottom: 2px solid rgba(182, 182, 182, 0.79);
-    font-size: 2em;line-height: 2em;
+    font-size: 2em;
+    line-height: 2em;
 }
 
 .time1 {
@@ -451,6 +480,5 @@ body {
     text-align: left;
     position: relative;
     top: -5px;
-    left: -32%;
+    left: -34%;
 }
-
