@@ -57,6 +57,11 @@
             window.addEventListener('refresh', function(e) { //执行刷新
                 getchat();
             });
+			window.addEventListener('deletepost', function(e) { //执行刷新
+			    var p = window.nu;
+				var de = document.getElementById(p);
+				de.parentNode.removeChild(de);
+			});
 
             function downCallback() {
                 console.log("下拉开始了");
@@ -80,6 +85,7 @@
             mui.init()
 
             function read_topic(n) {
+				window.nu = n;
                 mui.openWindow({
                     url: 'post.html?nickname=' + window.name + '&postnumber=' + n,
                     show: {
@@ -98,6 +104,7 @@
             }
 
             function admin() {
+				
                 mui.openWindow({
                     url: './admin.html?nickname=' + window.name,
                     show: {
@@ -105,21 +112,6 @@
                     }
                 })
             }
-
-            var first = null;
-            mui.back = function() {
-                if (!first) {
-                    first = new Date().getTime();
-                    mui.toast('再按一次退出应用');
-                    setTimeout(function() {
-                        first = null;
-                    }, 2000);
-                } else {
-                    if (new Date().getTime() - first < 2000) {
-                        plus.runtime.quit();
-                    }
-                }
-            };
 
             function info() {
                 mui.openWindow({

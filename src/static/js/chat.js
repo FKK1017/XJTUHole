@@ -73,15 +73,17 @@ function get_chat(wa) {
     }).done(function(data) {
         if (data == false) {
             if (wa == 1) {
+				window.emt = 0;
                 var ma = document.getElementById("mescroll");
-                ma.innerHTML = '<div class="msgem"><p>还没跟对方发过消息呐，快来聊一聊吧</p><img src="./images/chat.png"></div>' + ma.innerHTML;
-
-            } else if (wa == 0) {
+                ma.innerHTML = '<div class="msgem" id="msgem"><p>还没跟对方发过消息呐，快来聊一聊吧</p><img src="./images/chat.png"></div>' + ma.innerHTML;
+            }
+            else if (wa == 0) {
                 alert('没有更多消息了');
             } else {
                 alert('获取失败');
             }
         } else {
+			window.emt = 1;
             var ma = document.getElementById("msglist");
             var ustatus = 0;
             if (wa == 1 || wa == 2) {
@@ -222,6 +224,12 @@ function send_chat() {
             }),
         }).done(function(data) {
             if (data) {
+				if (window.emt == 0) {
+					var ma = document.getElementById("mescroll");
+					var de = document.getElementById("msgem")
+					ma.removeChild(de);
+					window.emt = 1;
+				}
                 var ma = document.getElementById("msglist");
                 ma.innerHTML = ma.innerHTML + '<li class="rightmsg"><div class="rightwithtime"><div class="rightmsgtime">' +
                     getNewDate() + '</div><div class="chat_right">' +
