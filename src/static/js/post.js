@@ -431,3 +431,9 @@ function report(r) {
         alert(data['message']);
     })
 }
+
+function NL() {
+    var NoLike = document.getElementById("NoLike");
+    NoLike.style.display = "block";
+    $(".NoLike").delay(1500).hide(0);
+}
