@@ -376,7 +376,8 @@ def handlereport():
     req = request.get_json()
     ret = handle_report(int(req['r']),req['w'],req['nu'],req['r_id'])
     return jsonify(ret)
-@app.route('/wer',methods=['POST'])
+
+@app.route('/isadministrator',methods=['POST'])
 def is_adm():
     req = request.get_json()
     ret = is_administrator(req['u'])

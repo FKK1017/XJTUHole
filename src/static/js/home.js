@@ -17,6 +17,7 @@ if (u.indexOf("?") != -1) {
 }
 
 gettopics('1');
+controller();
 
 $(function() {
     $(document).keydown(function(event) {
@@ -177,15 +178,15 @@ function getchat() {
             if (data[i]['content'].startsWith('*#$%^')) {
                 //申请
                 temp += '<div class="chatpart1"><div class="chatname">' + '匿名用户' + '</div>' +
-                    '<div class="chatctt">' + '对方发起了实名请求' + '</div></div>';
+                    '<div class="chatctt">' + '发起了实名请求' + '</div></div>';
             } else if (data[i]['content'].startsWith('@&^-/')) {
                 //接受
                 temp += '<div class="chatpart1"><div class="chatname">' + '匿名用户' + '</div>' +
-                    '<div class="chatctt">' + '对方接受了你的实名请求' + '</div></div>';
+                    '<div class="chatctt">' + '接受了实名请求' + '</div></div>';
             } else if (data[i]['content'].startsWith('{|:?>')) {
                 //拒绝
                 temp += '<div class="chatpart1"><div class="chatname">' + '匿名用户' + '</div>' +
-                    '<div class="chatctt">' + '对方拒绝了你的实名请求' + '</div></div>';
+                    '<div class="chatctt">' + '实名请求被拒绝' + '</div></div>';
             } else {
                 temp += '<div class="chatpart1"><div class="chatname">' + '匿名用户' + '</div>' +
                     '<div class="chatctt">' + data[i]['content'] + '</div></div>';
@@ -306,6 +307,7 @@ function pr() {
         }),
     }).done(function(data) {
         if (data['status']) {
+			xi.style.display = "none";
             chat(data['data']);
         }
     })
@@ -330,6 +332,7 @@ function hr() {
         }),
     }).done(function(data) {
         if (data['status']) {
+			xi.style.display = "none";
             chat(data['data']);
         }
     })
@@ -348,5 +351,20 @@ function quxiao() {
         }),
     }).done(function(data) {
         window.ajax.abort();
+    })
+}
+function controller() {
+    var u=window.name;
+    $.ajax(url + '/isadministrator',{
+        async:true,
+        type:"POST",
+        contentType:"application/json",
+        data:JSON.stringify({
+        u,
+        }),
+    }).done(function(data){
+        if (!data) {
+            $(".admin").hide();
+        }
     })
 }

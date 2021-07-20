@@ -1435,10 +1435,10 @@ def handle_report(way:int,type:str,id:str,reporter_id:str):
     if way==0:
         if type=="post":
             if not delete_post(id):
-                return False
+                return {"message":"处理失败"}
         else:
             if not delete_comment(id):
-                return False
+                return {"message":"处理失败"}
     db = mysql.connector.connect(host="localhost", user=mysql_user, passwd=mysql_password, database=database_name)
     cursor = db.cursor()
     if type=="post":
@@ -1449,10 +1449,10 @@ def handle_report(way:int,type:str,id:str,reporter_id:str):
         cursor.execute(sql)
         db.commit()
         db.close()
-        return True
+        return {"message":"处理成功"}
     except:
         db.close()
-        return False
+        return {"message":"处理失败"}
 
 def is_administrator(user_name:str):
     db = mysql.connector.connect(host="localhost", user=mysql_user, passwd=mysql_password, database=database_name)
