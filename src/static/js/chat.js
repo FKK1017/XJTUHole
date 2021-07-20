@@ -88,27 +88,43 @@ function get_chat(wa) {
             var ustatus = 0;
             if (wa == 1 || wa == 2) {
                 for (var i = data.length - 1; i >= 0; i--) {
-                    if (data[i]['content'].startsWith('*#$%^')) {
-                        //请求实名
-                        ustatus = 1;
-                        continue;
-                    } else if (data[i]['content'].startsWith('@&^-/')) {
-                        //确认实名
-                        ustatus = 2;
-                        continue;
-                    } else if (data[i]['content'].startsWith('{|:?>')) {
-                        //拒绝实名
-                        ustatus = 3;
-                        continue;
-                    }
                     if (data[i]['sender']) {
-                        ma.innerHTML = ma.innerHTML + '<li class="rightmsg"><div class="rightwithtime"><div class="rightmsgtime">' +
-                            data[i]['time'] + '</div><div class="chat_right">' +
-                            data[i]['content'] + '</div></div><img src="./images/user.png" alt="用户头像" class="rightimg"></li><li><br><br></li>';
+                        if (data[i]['content'].startsWith('*#$%^')) {
+                            //请求实名
+                            //ustatus = 1;
+                            continue;
+                        } else if (data[i]['content'].startsWith('@&^-/')) {
+                            //确认实名
+                            //ustatus = 2;
+                            continue;
+                        } else if (data[i]['content'].startsWith('{|:?>')) {
+                            //拒绝实名
+                            //ustatus = 3;
+                            continue;
+                        } else {
+                            ma.innerHTML = ma.innerHTML + '<li class="rightmsg"><div class="rightwithtime"><div class="rightmsgtime">' +
+                                data[i]['time'] + '</div><div class="chat_right">' +
+                                data[i]['content'] + '</div></div><img src="./images/user.png" alt="用户头像" class="rightimg"></li><li><br><br></li>';
+                        }
+
                     } else {
-                        ma.innerHTML = ma.innerHTML + '<li class="leftmsg"><img src="./images/momo.png" alt="对方头像" class="leftimg"><div class="leftwithtime"><div class="leftmsgtime">' +
-                            data[i]['time'] + '</div><div class="chat_left">' +
-                            data[i]['content'] + '</div></div></li><li><br><br></li>';
+                        if (data[i]['content'].startsWith('*#$%^')) {
+                            //请求实名
+                            ustatus = 1;
+                            continue;
+                        } else if (data[i]['content'].startsWith('@&^-/')) {
+                            //确认实名
+                            ustatus = 2;
+                            continue;
+                        } else if (data[i]['content'].startsWith('{|:?>')) {
+                            //拒绝实名
+                            ustatus = 3;
+                            continue;
+                        } else {
+                            ma.innerHTML = ma.innerHTML + '<li class="leftmsg"><img src="./images/momo.png" alt="对方头像" class="leftimg"><div class="leftwithtime"><div class="leftmsgtime">' +
+                                data[i]['time'] + '</div><div class="chat_left">' +
+                                data[i]['content'] + '</div></div></li><li><br><br></li>';
+                        }
                     }
                     tempcnt--;
                 }
@@ -121,10 +137,23 @@ function get_chat(wa) {
                             data[i]['content'] + '</div></div><img src="./images/user.png" alt="用户头像" class="rightimg"></li><li><br><br></li>' +
                             ma.innerHTML;
                     } else {
-                        ma.innerHTML = '<li class="leftmsg"><img src="./images/momo.png" alt="对方头像" class="leftimg"><div class="leftwithtime"><div class="leftmsgtime">' +
-                            data[i]['time'] + '</div><div class="chat_left">' +
-                            data[i]['content'] + '</div></div></li><li><br><br></li>' +
-                            ma.innerHTML;
+                        if (data[i]['content'].startsWith('*#$%^')) {
+                            //请求实名
+                            ustatus = 1;
+                            continue;
+                        } else if (data[i]['content'].startsWith('@&^-/')) {
+                            //确认实名
+                            ustatus = 2;
+                            continue;
+                        } else if (data[i]['content'].startsWith('{|:?>')) {
+                            //拒绝实名
+                            ustatus = 3;
+                            continue;
+                        } else {
+                            ma.innerHTML = ma.innerHTML + '<li class="leftmsg"><img src="./images/momo.png" alt="对方头像" class="leftimg"><div class="leftwithtime"><div class="leftmsgtime">' +
+                                data[i]['time'] + '</div><div class="chat_left">' +
+                                data[i]['content'] + '</div></div></li><li><br><br></li>';
+                        }
                     }
                     tempcnt--;
                 }
