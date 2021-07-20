@@ -7,12 +7,14 @@ window.onload = function() {
     mui('#picture').on('tap', 'li>a', function() {
         //mui.alert("你刚点击了\"" + this.innerHTML + "\"按钮");
         let r;
-        if (this.innerHTML == '删除') {
-            r = 0;
-        } else if (this.innerHTML != '取消') {
-            r = 1;
+        if (this.innerHTML != '取消') {
+            if (this.innerHTML == '删除') {
+                r = 0;
+            } else {
+                r = 1;
+            }
+            handle(r);
         }
-        handle(r);
         mui("#picture").popover('toggle'); //这是可以用来关闭底部弹窗的事件
     })
 }
