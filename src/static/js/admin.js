@@ -117,7 +117,7 @@ function handle(r) {
             r_id
         }),
     }).done(function(data) {
-        alert(data);
+        alert(data['message']);
         main();
     })
 }

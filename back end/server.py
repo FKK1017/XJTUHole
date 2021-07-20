@@ -377,6 +377,12 @@ def handlereport():
     ret = handle_report(int(req['r']),req['w'],req['nu'],req['r_id'])
     return jsonify(ret)
 
+@app.route('/isadministrator',methods=['POST'])
+def is_adm():
+    req = request.get_json()
+    ret = is_administrator(req['u'])
+    return jsonify(ret)
+
 if __name__ == "__main__":
     scheduler = BackgroundScheduler(timezone='MST')
     scheduler.add_job(update_hot_posts, 'interval', minutes=10)

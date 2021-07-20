@@ -87,11 +87,6 @@ function gettopics(w, p) {
         }),
     }).done(function(data) {
         if (data == false) {
-            if (w == 2) {
-                alert('帖子已经到底了');
-            } else {
-                alert('获取失败');
-            }
         } else {
             let temp = document.getElementById(l);
             if (w === 1) {

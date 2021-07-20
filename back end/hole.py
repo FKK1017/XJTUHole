@@ -1435,10 +1435,10 @@ def handle_report(way:int,type:str,id:str,reporter_id:str):
     if way==0:
         if type=="post":
             if not delete_post(id):
-                return False
+                return {"message":"处理失败"}
         else:
             if not delete_comment(id):
-                return False
+                return {"message":"处理失败"}
     db = mysql.connector.connect(host="localhost", user=mysql_user, passwd=mysql_password, database=database_name)
     cursor = db.cursor()
     if type=="post":
@@ -1449,10 +1449,32 @@ def handle_report(way:int,type:str,id:str,reporter_id:str):
         cursor.execute(sql)
         db.commit()
         db.close()
-        return True
+        return {"message":"处理成功"}
+    except:
+        db.close()
+        return {"message":"处理失败"}
+
+def is_administrator(user_name:str):
+    db = mysql.connector.connect(host="localhost", user=mysql_user, passwd=mysql_password, database=database_name)
+    cursor = db.cursor()
+    sql = "select user_id from user_information where user_name = '%s'" % (user_name)
+    try:
+        cursor.execute(sql)
     except:
         db.close()
         return False
+    user_id = str(cursor.fetchall()[0][0])
+    sql = "select is_administrator from user_information where user_id = %s" % (user_id)
+    try:
+        cursor.execute(sql)
+    except:
+        db.close()
+        return False
+    is_administrator = cursor.fetchall()[0][0]
+    if is_administrator==0:
+        return False
+    else:
+        return True
 
 '''def alter_all_password():
     db = mysql.connector.connect(host="localhost", user=mysql_user, passwd=mysql_password, database=database_name)
